@@ -1,22 +1,11 @@
 require 'rails_helper'
 
 feature 'log in' do
-  let!(:jon) { FactoryGirl.create(:user) }
-  context 'as a user' do
-    scenario 'user provides valid user information for log-in' do
-      visit root_path
-      click_link 'Log In'
-      user_session_url(jon)
-
-      expect(page).to have_content('Signed in successfully.')
+  context 'As a user' do
+    scenario 'I can log in if I already have an account' do
     end
 
-    scenario 'user can log off' do
-      user_sign_in(jon)
-      visit root_path
-      click_link 'Log Off'
-
-      expect(page).to have_content 'Signed out successfully'
+    scenario 'I can log out' do
     end
   end
 end
