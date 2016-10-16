@@ -271,6 +271,9 @@ Style/MultilineOperationIndentation:
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/UnneededPercentQ:
   Enabled: false
 
