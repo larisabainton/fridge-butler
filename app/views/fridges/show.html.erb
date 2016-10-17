@@ -1,1 +1,7 @@
 <%= @fridge.name %>
+
+<ul>
+  <% @foodcategories.each do |fc| %>
+    <%= fc.name %>
+  <% end %>
+</ul>

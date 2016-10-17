@@ -3,18 +3,19 @@ require 'rails_helper'
 feature 'view fridge' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
-  let!(:dairy) { FactoryGirl.create(:foodcategory, user_id: user.id) }
-  let!(:vegetables) { FactoryGirl.create(:foodcategory, name: 'Vegetables', user_id: user.id) }
-  let!(:meat) { FactoryGirl.create(:foodcategory) }
-  context 'As a user' do
-    before(:each) do
-      visit root_path
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Log in'
-      click_on 'My Fridge'
-    end
+  let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
+  let!(:vegetables) { FactoryGirl.create(:fridgecategory, name: 'Vegetables', fridge_id: fridge.id) }
+  let!(:meat) { FactoryGirl.create(:fridgecategory, name: 'Meat') }
 
+  before(:each) do
+    visit root_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+    click_on 'My Fridge'
+  end
+
+  context 'As a user' do
     scenario 'I can see the name of my fridge on the show page' do
       expect(page).to have_content(fridge.name)
     end
