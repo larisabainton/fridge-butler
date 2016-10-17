@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="title">
-      <span class="fridge">fridge</span><span class="butler">BUTLER</span>
-  </div>
+  <%= link_to root_path do %>
+    <div class="title">
+        <span class="fridge">fridge</span><span class="butler">BUTLER</span>
+    </div>
+  <% end %>
 
   <% if user_signed_in? %>
     <li><%= link_to "Log Off", destroy_user_session_path, method: :delete %></li>

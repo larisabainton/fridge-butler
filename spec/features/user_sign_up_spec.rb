@@ -71,22 +71,45 @@ feature 'sign up' do
     end
 
     scenario 'After I sign up, I am sent to a page to create my fridge' do
+      visit root_path
+      click_link 'Sign Up'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example5@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
+
+
+      expect(page).to have_content('Now...Give Your Fridge a Name!')
     end
 
     scenario 'I must provide a name to create the fridge' do
-      user_session_url(user)
-      visit new_fridge_path
+      visit root_path
+      click_link 'Sign Up'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example6@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
       fill_in 'Name', with: 'My Fridge'
       click_button 'Save Fridge'
 
-      expect(page).to have_content 'Fridge added successfully'
+      expect(page).to have_content 'Fridge created successfully'
       expect(page).to have_content 'My Fridge'
 
     end
 
     scenario 'I expect an error if I don\'t provide a name' do
-      user_session_url(user)
-      visit new_fridge_path
+      visit root_path
+      click_link 'Sign Up'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example5@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
       click_button 'Save Fridge'
 
       expect(page).to have_content('Name can\'t be blank')
