@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "fridge#index"
+  devise_for :users, controllers: { registrations: "registrations" }
+  root "fridges#index"
+
+  resources :fridges
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

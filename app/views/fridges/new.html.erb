@@ -1,0 +1,6 @@
+<h1>Now...Give Your Fridge a Name!</h1>
+
+<%= form_for @fridge do |f| %>
+  <%= f.text_area :name, placeholder: "Name"%>
+  <%= f.submit "Save Fridge" %>
+<% end %>
