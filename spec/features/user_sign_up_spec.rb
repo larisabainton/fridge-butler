@@ -96,6 +96,7 @@ feature 'sign up' do
       click_button 'Save Fridge'
 
       expect(page).to have_content 'Fridge created successfully'
+      expect(page).to have_content 'Add some categories'
     end
 
     scenario 'I expect an error if I don\'t provide a name' do
@@ -128,6 +129,7 @@ feature 'sign up' do
       click_button 'Save Category'
 
       expect(page).to have_content('Category added successfully')
+      expect(page).to have_content('My Fridge')
     end
   end
 end
