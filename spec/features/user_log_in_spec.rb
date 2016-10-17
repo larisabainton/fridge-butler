@@ -11,6 +11,7 @@ feature 'log in' do
       click_button 'Log in'
 
       expect(page).to have_content('Signed in successfully')
+      expect(page).to have_content('Log Off')
     end
 
     scenario 'I can log out' do
@@ -21,8 +22,8 @@ feature 'log in' do
       click_button 'Log in'
       click_link 'Log Off'
 
-      # expect(page).to have_content('Signed out successfully')
-
+      expect(page).to have_content('Signed out successfully')
+      expect(page).to have_content('Log In')
     end
   end
 end
