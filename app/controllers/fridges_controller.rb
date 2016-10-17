@@ -30,7 +30,7 @@ class FridgesController < ApplicationController
 
     if @fridge.save
       flash[:notice] = "Fridge created successfully"
-      redirect_to fridges_path
+      redirect_to new_fridgecategory_path
     else
       flash[:notice] = @fridge.errors.full_messages.join(', ')
       render 'new'

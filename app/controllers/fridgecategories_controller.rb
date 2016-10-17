@@ -1,7 +1,7 @@
 class FridgecategoriesController < ApplicationController
   def new
     if user_signed_in?
-      @fridgecategorycategory = Fridgecategorycategory.new
+      @fridgecategory = Fridgecategory.new
     else
       flash[:notice] = "Please sign in"
       redirect_to new_user_session_path
