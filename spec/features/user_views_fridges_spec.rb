@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'view fridge' do
+feature 'view fridges' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:user_fridge) {FactoryGirl.create(:fridge, user_id: user.id)}
   let!(:other_fridge) { FactoryGirl.create(:fridge) }

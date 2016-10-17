@@ -96,7 +96,7 @@ feature 'sign up' do
       click_button 'Save Fridge'
 
       expect(page).to have_content 'Fridge created successfully'
-      expect(page).to have_content 'My Fridge'
+      expect(page).to have_content 'Add some categories'
     end
 
     scenario 'I expect an error if I don\'t provide a name' do
@@ -112,6 +112,24 @@ feature 'sign up' do
       click_button 'Save Fridge'
 
       expect(page).to have_content('Name can\'t be blank')
+    end
+
+    scenario 'I can create a foodcategory after I create my fridge' do
+      visit root_path
+      click_link 'Sign Up'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example6@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
+      fill_in 'Name', with: 'My Fridge'
+      click_button 'Save Fridge'
+      fill_in 'Name', with: 'Dairy'
+      click_button 'Save Category'
+
+      expect(page).to have_content('Category added successfully')
+      expect(page).to have_content('My Fridge')
     end
   end
 end
