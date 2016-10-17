@@ -12,6 +12,7 @@ class FridgesController < ApplicationController
     @user = current_user
     @fridge = @user.fridge
     @fridgecategories = @fridge.fridgecategories
+    @fridgecategory = Fridgecategory.new
   end
 
   def new

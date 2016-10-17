@@ -30,6 +30,10 @@ feature 'view fridge' do
     end
 
     scenario 'I can add new food categories on the show page of my fridge' do
+      fill_in 'Name', with: 'Fruits'
+      click_button 'Save Category'
+
+      expect(page).to have_content('Category added successfully')
     end
   end
 end

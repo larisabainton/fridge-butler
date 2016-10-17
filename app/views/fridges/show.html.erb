@@ -5,3 +5,9 @@
     <%= fc.name %>
   <% end %>
 </ul>
+
+<h2>Add a Category:</h2>
+<%= form_for @fridgecategory do |f| %>
+  <%= f.text_area :name, placeholder: "Name"%>
+  <%= f.submit "Save Category" %>
+<% end %>
