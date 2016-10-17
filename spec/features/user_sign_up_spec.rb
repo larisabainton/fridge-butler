@@ -80,7 +80,6 @@ feature 'sign up' do
       fill_in 'Password Confirmation', with: 'password'
       click_button 'Sign up'
 
-
       expect(page).to have_content('Now...Give Your Fridge a Name!')
     end
 
@@ -98,7 +97,6 @@ feature 'sign up' do
 
       expect(page).to have_content 'Fridge created successfully'
       expect(page).to have_content 'My Fridge'
-
     end
 
     scenario 'I expect an error if I don\'t provide a name' do

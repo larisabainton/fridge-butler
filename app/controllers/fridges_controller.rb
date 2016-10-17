@@ -15,7 +15,7 @@ class FridgesController < ApplicationController
 
   def new
     if user_signed_in?
-    @fridge = Fridge.new
+      @fridge = Fridge.new
     else
       flash[:notice] = "Please sign in"
       redirect_to new_user_session_path
@@ -28,7 +28,7 @@ class FridgesController < ApplicationController
 
     if @fridge.save
       flash[:notice] = "Fridge created successfully"
-      redirect_to @fridge
+      redirect_to fridges_path
     else
       flash[:notice] = @fridge.errors.full_messages.join(', ')
       render 'new'

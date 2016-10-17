@@ -4,7 +4,6 @@ feature 'view fridge' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:user_fridge) {FactoryGirl.create(:fridge, user_id: user.id)}
   let!(:other_fridge) { FactoryGirl.create(:fridge) }
-
   context 'As a user' do
 
     scenario 'I cannot see someone else\'s fridge' do
