@@ -9,21 +9,22 @@ feature 'view fridge' do
 
     scenario 'I cannot see someone else\'s fridge' do
       visit root_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Log in'
+      click_on 'My Fridge'
 
       expect(page).not_to have_content(other_fridge.name)
     end
 
-    scenario 'I see my own fridge on the home page' do
+    scenario 'The link takes me to my fridge show page' do
       visit root_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Log in'
+      click_on 'My Fridge'
 
       expect(page).to have_content(user_fridge.name)
-    end
-
-    scenario 'I can click on my fridge to take me to the show page' do
-      visit root_path
-      click_link user_fridge.name
-
-      expect(page).to have_content('search')
     end
   end
 end
