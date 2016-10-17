@@ -69,5 +69,27 @@ feature 'sign up' do
 
       expect(page).to have_content('Password is too short')
     end
+
+    scenario 'After I sign up, I am sent to a page to create my fridge' do
+    end
+
+    scenario 'I must provide a name to create the fridge' do
+      user_session_url(user)
+      visit new_fridge_path
+      fill_in 'Name', with: 'My Fridge'
+      click_button 'Save Fridge'
+
+      expect(page).to have_content 'Fridge added successfully'
+      expect(page).to have_content 'My Fridge'
+
+    end
+
+    scenario 'I expect an error if I don\'t provide a name' do
+      user_session_url(user)
+      visit new_fridge_path
+      click_button 'Save Fridge'
+
+      expect(page).to have_content('Name can\'t be blank')
+    end
   end
 end
