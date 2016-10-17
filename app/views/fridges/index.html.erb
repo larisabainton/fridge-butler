@@ -1,1 +1,1 @@
-<%= link_to 'My Fridge', fridge_path(@fridge) %>
+<%= link_to 'My Fridge', fridge_path(@fridge) unless @fridge.blank? %>

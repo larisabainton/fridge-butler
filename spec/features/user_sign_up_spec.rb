@@ -110,6 +110,7 @@ feature 'sign up' do
       fill_in 'Password', with: 'password'
       fill_in 'Password Confirmation', with: 'password'
       click_button 'Sign up'
+      fill_in 'Name', with: ''
       click_button 'Save Fridge'
 
       expect(page).to have_content('Name can\'t be blank')
