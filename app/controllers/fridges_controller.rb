@@ -11,7 +11,7 @@ class FridgesController < ApplicationController
   def show
     @user = current_user
     @fridge = @user.fridge
-    @foodcategories = @fridge.foodcategories
+    @fridgecategories = @fridge.fridgecategories
   end
 
   def new
