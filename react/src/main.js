@@ -1,8 +1,10 @@
-import '../app/stylesheets/application.scss'
+import 'babel-polyfill';
 import React from 'react';
 import ReactDom from 'react-dom';
 
-ReactDOM.render(
-  <App />
-  document.getElementById('app')
-)
+$(function() {
+  ReactDOM.render(
+    <h1>Hello World</h1>,
+    document.getElementById('app')
+  );
+});
