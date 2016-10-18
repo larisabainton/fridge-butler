@@ -12,23 +12,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
-  <%= link_to root_path do %>
-    <div class="title">
-        <span class="fridge">fridge</span><span class="butler">BUTLER</span>
-    </div>
-  <% end %>
+  <div id="app">
+    <%= link_to root_path do %>
+      <div class="title">
+          <span class="fridge">fridge</span><span class="butler">BUTLER</span>
+      </div>
+    <% end %>
 
-  <% if user_signed_in? %>
-    <li><%= link_to "Log Off", destroy_user_session_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-    <li><%= link_to "Log In", new_user_session_path %></li>
-  <% end %>
+    <% if user_signed_in? %>
+      <li><%= link_to "Log Off", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <li><%= link_to "Log In", new_user_session_path %></li>
+    <% end %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-<%= yield %>
-
+  <%= yield %>
+    <script src="bundle.js"></script>
+  </div>
 </body>
 </html>
