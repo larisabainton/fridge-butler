@@ -1,4 +1,4 @@
-.title {
+.title-area {
   background-color: #4ca5ff;
   color: white;
   font-size: 4rem;
@@ -11,5 +11,19 @@
 
   .butler {
     font-family: Eczar;
+  }
+}
+
+$topbar-bg-color:  #4ca5ff;
+
+nav li {
+  list-style: none;
+
+  :link {
+    color: white;
+  }
+
+  :visited {
+    color: white;
   }
 }
