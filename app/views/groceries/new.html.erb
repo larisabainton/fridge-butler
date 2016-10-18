@@ -1,22 +1,3 @@
-<%= @fridge.name %>
-
-<ul>
-  <% @fridgecategories.each do |fc| %>
-    <%= fc.name %>
-    <ul>
-      <% fc.groceries.each do |grocery| %>
-        <li> <%= grocery.name %> </li>
-      <% end %>
-    </ul>
-  <% end %>
-</ul>
-
-<h2>Add a Category:</h2>
-<%= form_for @fridgecategory do |f| %>
-  <%= f.text_area :name, placeholder: "Name"%>
-  <%= f.submit "Save Category" %>
-<% end %>
-
 <h2>Add a Grocery:</h2>
 <%= form_for @grocery do |f| %>
   <%= f.text_area :name, placeholder: 'Enter a name' %>
