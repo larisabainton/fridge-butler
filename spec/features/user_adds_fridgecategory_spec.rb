@@ -37,7 +37,6 @@ feature 'add fridgecategory' do
       visit '/fridgecategories/new'
 
       expect(page).to have_content('Please sign in')
->>>>>>> e2d955adb8429b13018689dcdaf326285fac9205
     end
   end
 end

@@ -1,0 +1,8 @@
+<%= @user.first_name %> <%= @user.last_name %>
+
+<%= @user.email %>
+
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_user_path(@user), method: :get %>
+  <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
+<% end %>
