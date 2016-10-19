@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'add fridgecategory' do
+feature 'add groceries' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
   let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
@@ -18,26 +18,43 @@ feature 'add fridgecategory' do
   end
 
   context 'As a user' do
-    scenario 'I can add new food categories on the show page of my fridge' do
-      fill_in 'Name', with: 'Fruits'
-      click_button 'Save Category'
+    scenario 'I can add new groceries on the show page of my fridge' do
+      within "div.new-grocery" do
+        fill_in 'Enter a name', with: 'Carrot'
+        fill_in 'Enter an amount', with: '2'
+        choose vegetables.name
 
+        click_button 'Add Grocery'
+      end
       expect(page).to_not have_content('Please sign in')
-      expect(page).to have_content('Category added successfully')
+      expect(page).to have_content('Grocery added successfully')
+    end
+
+    scenario 'I get an error if I don\'t provide anything' do
+      click_button 'Add Grocery'
+
+      expect(page).to have_content('Name can\'t be blank, Quantity is not a number, Quantity can\'t be blank, Fridgecategory can\'t be blank, Fridgecategory is not a number')
+    end
+
+    scenario 'I get an error if I don\'t enter a quantity' do
+      fill_in 'Enter a name', with: 'Carrot'
+      click_button 'Add Grocery'
+
+      expect(page).to have_content('Quantity can\'t be blank')
     end
 
     scenario 'I get an error if I don\'t provide a name' do
-      click_button 'Save Category'
+      fill_in 'Enter an amount', with: '2'
+      click_button 'Add Grocery'
 
       expect(page).to have_content('Name can\'t be blank')
     end
 
     scenario 'I must be logged in to create a fridge category' do
       click_link 'Log Off'
-      visit '/fridgecategories/new'
+      visit '/groceries/new'
 
       expect(page).to have_content('Please sign in')
->>>>>>> e2d955adb8429b13018689dcdaf326285fac9205
     end
   end
 end

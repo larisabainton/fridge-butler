@@ -1,6 +1,7 @@
 class Fridge < ActiveRecord::Base
   belongs_to :user
-  has_many :fridgecategories
+  has_many :fridgecategories, dependent: :destroy
+  has_many :groceries, through: :fridgecategories
 
   validates :name, presence: true
   validates :user_id, presence: true
