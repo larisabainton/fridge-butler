@@ -43,6 +43,9 @@ feature 'sign up' do
       click_link 'Delete'
 
       expect(page).to have_xpath('//a[contains(., sign_in)]')
+      expect(Grocery.all).to_not include(grocery)
+      expect(Fridgecategory.all).to_not include(fridgecategory)
+      expect(Fridge.all).to_not include(fridge)
     end
   end
 end
