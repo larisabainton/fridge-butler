@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'view fridge' do
+feature 'add fridgecategory' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
   let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
@@ -22,7 +22,7 @@ feature 'view fridge' do
       fill_in 'Name', with: 'Fruits'
       click_button 'Save Category'
 
-      expect(page).to not_have_content('Please sign in')
+      expect(page).to_not have_content('Please sign in')
       expect(page).to have_content('Category added successfully')
     end
 

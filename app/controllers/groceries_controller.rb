@@ -13,6 +13,7 @@ class GroceriesController < ApplicationController
     @grocery = Grocery.new(grocery_params)
     @user = current_user
     @fridge = @user.fridge
+    @fridgecategories = @fridge.fridgecategories
 
     if @grocery.save
       flash[:notice] = "Grocery added successfully"
