@@ -22,7 +22,21 @@ feature 'view fridge' do
       fill_in 'Name', with: 'Fruits'
       click_button 'Save Category'
 
+      expect(page).to not_have_content('Please sign in')
       expect(page).to have_content('Category added successfully')
+    end
+
+    scenario 'I get an error if I don\'t provide a name' do
+      click_button 'Save Category'
+
+      expect(page).to have_content('Name can\'t be blank')
+    end
+
+    scenario 'I must be logged in to create a fridge category' do
+      click_link 'Log Off'
+      visit '/fridgecategories/new'
+
+      expect(page).to have_content('Please sign in')
     end
   end
 end
