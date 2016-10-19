@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     let categories = this.state.categories;
     categories.getCategories();
-    
+
     return(
       <Fridge
         fridgeCategories = {categories}
