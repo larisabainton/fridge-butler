@@ -40,10 +40,11 @@ feature 'view fridge' do
 
     scenario 'I can add new groceries on the show page of my fridge' do
       fill_in 'Name', with: 'Apple'
-      
-      click_button 'Save Category'
+      fill_in 'Quantity', with: '2'
 
-      expect(page).to have_content('Category added successfully')
+      click_button 'Add Grocery'
+
+      expect(page).to have_content('Grocery added successfully')
     end
 
     scenario 'I can see groceries I\'ve added on the show page of my fridge' do

@@ -13,6 +13,8 @@ class GroceriesController < ApplicationController
     @user = current_user
     @fridge = @user.fridge
 
+    binding.pry
+
     if @grocery.save
       flash[:notice] = "Category added successfully"
       redirect_to fridge_path(@fridge)

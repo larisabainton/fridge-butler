@@ -24,6 +24,6 @@
   <%= f.label :exp_date, "Expires:" %>
   <%= f.date_select :exp_date, order: [:month, :day, :year] %>
   <%= f.label :fridgecategory_id, "Category:" %>
-  <%= f.collection_radio_buttons(:fridgecategory_id, Fridgecategory.all, :id, :name) %>
+  <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
   <%= f.submit "Add Grocery" %>
 <% end %>
