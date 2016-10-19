@@ -12,6 +12,7 @@ feature 'sign up' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
+    click_link 'My Account'
   end
 
   context 'As a user' do

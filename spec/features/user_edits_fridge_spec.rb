@@ -17,8 +17,9 @@ feature 'sign up' do
   context 'As a user' do
     scenario 'I can edit my fridge' do
       old_name = fridge.name
-      click_link 'Edit Fridge'
+      click_link fridge.name
       fill_in 'Name', with: 'New Fridge Name'
+      click_button 'Save Fridge'
 
       expect(page).to have_content('New Fridge Name')
       expect(page).to_not have_content(old_name)
