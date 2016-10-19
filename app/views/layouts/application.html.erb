@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
   <title>FridgeButler</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= javascript_include_tag "vendor/modernizr" %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -9,29 +12,28 @@
   <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link href="foundation-overrides.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="fixed">
-    <nav class="top-bar" data-topbar role="navigation" id ="top-bar">
-      <%= link_to root_path do %>
-        <div class="title-area small-9 columns">
-            <span class="fridge">fridge</span><span class="butler">BUTLER</span>
-        </div>
-      <% end %>
-
-      <section class = "top-bar-section small-3 columns">
-        <ul class = "right">
-          <% if user_signed_in? %>
-            <li><%= link_to "Log Off", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign Up", new_user_registration_path %></li>
-            <li><%= link_to "Log In", new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </section>
-      </nav>
-    </div>
+  <div class="top-bar">
+    <%= link_to root_path do %>
+      <div class="title-area small-9 columns">
+          <span class="fridge">fridge</span><span class="butler">BUTLER</span>
+      </div>
+    <% end %>
+      <ul class = "right small-2 columns">
+        <% if user_signed_in? %>
+          <li><%= link_to "Log Off", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+  </div>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

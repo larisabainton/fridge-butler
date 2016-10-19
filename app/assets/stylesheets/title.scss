@@ -14,10 +14,13 @@
   }
 }
 
-$topbar-bg-color:  #4ca5ff;
+meta.top-bar ul{
+  background-color: #4ca5ff;
+}
 
-nav li {
+.top-bar li {
   list-style: none;
+  background-color: #4ca5ff;
 
   :link {
     color: white;
