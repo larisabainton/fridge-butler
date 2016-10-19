@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'edit user account' do
   let(:user) { FactoryGirl.create(:user) }
+  let!(:other_user) { FactoryGirl.create(:user) }
 
   before(:each) do
     visit root_path
@@ -11,7 +12,7 @@ feature 'edit user account' do
   end
 
   context 'As a user' do
-    scenario 'a logged in user can edit their user information' do
+    scenario 'I can edit my user information' do
       visit user_path(user)
       click_link 'Edit'
 
@@ -23,12 +24,18 @@ feature 'edit user account' do
       expect(page).not_to have_content('John')
     end
 
-    scenario 'a logged in user must provide valid information' do
+    scenario 'I must provide valid information' do
       visit edit_user_path(user)
       fill_in 'First name', with: ''
       click_button 'Save Changes'
 
       expect(page).to have_content('First name can\'t be blank')
+    end
+
+    scenario 'I cannot edit anyone else\'s profile' do
+      visit edit_user_path(other_user)
+
+      expect(page).to have_content('You can only edit your own profile')
     end
   end
 end

@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
   else
     flash[:notice] = 'You do not have permission to edit this user'
-    redirect_to new_user_session_path
+    redirect_to root_path
   end
 end
 

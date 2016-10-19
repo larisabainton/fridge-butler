@@ -39,9 +39,14 @@ class FridgesController < ApplicationController
   end
 
   def edit
+    @fridge = Fridge.find(params[:id])
+    if current_user != @fridge.user
+      flash[:notice] = 'You cannot edit this fridge'
+      redirect_to @fridge
+    end
   end
 
-  
+
   def update
   end
 
