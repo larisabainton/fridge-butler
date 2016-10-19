@@ -1,11 +1,15 @@
-<%= @fridge.name %>
+<%= link_to @fridge.name, edit_fridge_path(@fridge) %>
 
 <ul>
   <% @fridgecategories.each do |fc| %>
     <%= fc.name %>
+    <%= link_to 'Edit Category', edit_fridgecategory_path(fc) %> </li>
+    <%= link_to 'Delete Category', fc, method: :delete, data: { confirm: 'You sure?' } %>
     <ul>
       <% fc.groceries.each do |grocery| %>
-        <li> <%= grocery.name %> </li>
+        <li> <%= grocery.name %>
+        <%= link_to 'Edit Grocery', edit_grocery_path(grocery) %>
+         <%= link_to 'Delete Grocery', grocery, method: :delete, data: { confirm: 'You sure?' } %> </li>
       <% end %>
     </ul>
   <% end %>
