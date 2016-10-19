@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'view fridge' do
+feature 'add fridgecategory' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
   let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
@@ -18,22 +18,25 @@ feature 'view fridge' do
   end
 
   context 'As a user' do
-    scenario 'I can see the name of my fridge on the show page' do
-      expect(page).to have_content(fridge.name)
+    scenario 'I can add new food categories on the show page of my fridge' do
+      fill_in 'Name', with: 'Fruits'
+      click_button 'Save Category'
+
+      expect(page).to_not have_content('Please sign in')
+      expect(page).to have_content('Category added successfully')
     end
 
-    scenario 'I can see the food categories on the show page of my fridge' do
-      expect(page).to have_content(dairy.name)
-      expect(page).to have_content(vegetables.name)
+    scenario 'I get an error if I don\'t provide a name' do
+      click_button 'Save Category'
+
+      expect(page).to have_content('Name can\'t be blank')
     end
 
-    scenario 'I don\'t see food categories on the show page of my fridge that I didn\'t create' do
-      expect(page).not_to have_content(meat.name)
-    end
+    scenario 'I must be logged in to create a fridge category' do
+      click_link 'Log Off'
+      visit '/fridgecategories/new'
 
-    scenario 'I can see groceries I\'ve added on the show page of my fridge' do
-      expect(page).to have_content(milk.name)
-      expect(page).to have_content(cheese.name)
+      expect(page).to have_content('Please sign in')
     end
   end
 end

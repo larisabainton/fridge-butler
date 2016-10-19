@@ -3,6 +3,11 @@
 <ul>
   <% @fridgecategories.each do |fc| %>
     <%= fc.name %>
+    <ul>
+      <% fc.groceries.each do |grocery| %>
+        <li> <%= grocery.name %> </li>
+      <% end %>
+    </ul>
   <% end %>
 </ul>
 
@@ -11,3 +16,16 @@
   <%= f.text_area :name, placeholder: "Name"%>
   <%= f.submit "Save Category" %>
 <% end %>
+
+<h2>Add a Grocery:</h2>
+<div class="new-grocery">
+  <%= form_for @grocery do |f| %>
+    <%= f.text_area :name, placeholder: 'Enter a name' %>
+    <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
+    <%= f.label :fridgecategory_id, "Category:" %>
+    <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
+    <%= f.label :exp_date, "Expires:" %>
+    <%= f.date_select :exp_date, order: [:month, :day, :year] %>
+    <%= f.submit "Add Grocery" %>
+  <% end %>
+</div>

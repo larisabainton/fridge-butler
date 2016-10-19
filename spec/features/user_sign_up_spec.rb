@@ -80,7 +80,14 @@ feature 'sign up' do
       fill_in 'Password Confirmation', with: 'password'
       click_button 'Sign up'
 
+      expect(page).to have_xpath('//a[contains(., fridges)]')
       expect(page).to have_content('Now...Give Your Fridge a Name!')
+    end
+
+    scenario 'If I don\'t sign up, I can\'t make a fridge' do
+      visit '/fridges/new'
+
+      expect(page).to have_content('Please sign in')
     end
 
     scenario 'I must provide a name to create the fridge' do
