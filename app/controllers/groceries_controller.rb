@@ -14,10 +14,8 @@ class GroceriesController < ApplicationController
     @user = current_user
     @fridge = @user.fridge
 
-    binding.pry
-
     if @grocery.save
-      flash[:notice] = "Category added successfully"
+      flash[:notice] = "Grocery added successfully"
       redirect_to fridge_path(@fridge)
     else
       flash[:notice] = @grocery.errors.full_messages.join(', ')
@@ -34,6 +32,6 @@ class GroceriesController < ApplicationController
   private
 
   def grocery_params
-    params.require(:grocery).permit(:name, :quantity, :exp_date, :fridgecategory)
+    params.require(:grocery).permit(:name, :quantity, :exp_date, :fridgecategory_id)
   end
 end

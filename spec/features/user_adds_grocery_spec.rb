@@ -19,12 +19,13 @@ feature 'view fridge' do
 
   context 'As a user' do
     scenario 'I can add new groceries on the show page of my fridge' do
-      fill_in 'Name', with: 'Carrot'
-      fill_in 'Quantity', with: '2'
-      check_button vegetables.name
+      within "div.new-grocery" do
+        fill_in 'Enter a name', with: 'Carrot'
+        fill_in 'Enter an amount', with: '2'
+        choose vegetables.name
 
-      click_button 'Add Grocery'
-
+        click_button 'Add Grocery'
+      end
       expect(page).to have_content('Grocery added successfully')
     end
   end
