@@ -25,12 +25,46 @@ class GroceriesController < ApplicationController
   end
 
   def edit
+    @grocery = Grocery.find(params[:id])
+    @fridgecategory = @grocery.fridgecategory
+    @fridge = @fridgecategory.fridge
+    @fridgecategories = @fridge.fridgecategories
+
+    if current_user != @fridge.user
+      flash[:notice] = 'You cannot edit this grocery'
+      redirect_to root_path
+    end
   end
 
   def update
+    @grocery = Grocery.find(params[:id])
+    @fridgecategory = @grocery.fridgecategory
+    @fridge = @fridgecategory.fridge
+    if @fridge.user == current_user
+      if @grocery.update_attributes(grocery_params)
+        flash[:notice] = "Grocery edited successfully"
+        redirect_to @fridge
+      else
+        flash[:notice] = @grocery.errors.full_messages.join(', ')
+        render 'edit'
+      end
+    else
+      flash[:notice] = 'You do not have permission to edit this grocery'
+      redirect_to root_path
+    end
   end
 
-  def delete
+  def destroy
+    @grocery = Grocery.find(params[:id])
+    @fridgecategory = @grocery.fridgecategory
+    @fridge = @fridgecategory.fridge
+    if @fridge.user == current_user
+      @grocery.destroy
+      redirect_to @fridge
+    else
+      flash[:notice] = 'You do not have permission to edit this grocery'
+      redirect_to root_path
+    end
   end
 
   private
