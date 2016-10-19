@@ -1,4 +1,5 @@
 class GroceriesController < ApplicationController
+
   def new
     if user_signed_in?
       @grocery = Grocery.new

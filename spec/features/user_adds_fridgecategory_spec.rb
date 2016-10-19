@@ -18,22 +18,11 @@ feature 'view fridge' do
   end
 
   context 'As a user' do
-    scenario 'I can see the name of my fridge on the show page' do
-      expect(page).to have_content(fridge.name)
-    end
+    scenario 'I can add new food categories on the show page of my fridge' do
+      fill_in 'Name', with: 'Fruits'
+      click_button 'Save Category'
 
-    scenario 'I can see the food categories on the show page of my fridge' do
-      expect(page).to have_content(dairy.name)
-      expect(page).to have_content(vegetables.name)
-    end
-
-    scenario 'I don\'t see food categories on the show page of my fridge that I didn\'t create' do
-      expect(page).not_to have_content(meat.name)
-    end
-
-    scenario 'I can see groceries I\'ve added on the show page of my fridge' do
-      expect(page).to have_content(milk.name)
-      expect(page).to have_content(cheese.name)
+      expect(page).to have_content('Category added successfully')
     end
   end
 end
