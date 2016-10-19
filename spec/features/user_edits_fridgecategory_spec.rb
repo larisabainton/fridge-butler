@@ -33,6 +33,15 @@ feature 'sign up' do
       expect(page).to_not have_content(fridgecategory.name)
     end
 
+    scenario 'I must input valid info to my fridgecategory' do
+      click_link 'Edit Category'
+
+      fill_in 'Name', with: ''
+      click_button 'Save Category'
+
+      expect(page).to have_content('Name can\'t be blank')
+    end
+
     scenario 'I can\'t edit anyone else\'s fridgecategory' do
       visit edit_fridgecategory_path(other_fridgecategory)
 

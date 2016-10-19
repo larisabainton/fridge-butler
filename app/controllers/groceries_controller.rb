@@ -40,6 +40,8 @@ class GroceriesController < ApplicationController
     @grocery = Grocery.find(params[:id])
     @fridgecategory = @grocery.fridgecategory
     @fridge = @fridgecategory.fridge
+    @fridgecategories = @fridge.fridgecategories
+
     if @fridge.user == current_user
       if @grocery.update_attributes(grocery_params)
         flash[:notice] = "Grocery edited successfully"

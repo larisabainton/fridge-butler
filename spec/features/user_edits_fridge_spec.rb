@@ -30,5 +30,14 @@ feature 'sign up' do
 
       expect(page).to have_content('You cannot edit this fridge')
     end
+
+    scenario 'I must input valid info to my fridge' do
+      click_link fridge.name
+
+      fill_in 'Name', with: ''
+      click_button 'Save Fridge'
+
+      expect(page).to have_content('Name can\'t be blank')
+    end
   end
 end

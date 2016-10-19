@@ -32,6 +32,15 @@ feature 'sign up' do
       expect(page).to_not have_content(old_name)
     end
 
+    scenario 'I must input valid info to my grocery' do 
+      click_link 'Edit Grocery'
+
+      fill_in 'Enter a name', with: ''
+      click_button 'Save Grocery'
+
+      expect(page).to have_content('Name can\'t be blank')
+    end
+
     scenario 'I can delete my grocery' do
       click_link 'Delete Grocery'
 
