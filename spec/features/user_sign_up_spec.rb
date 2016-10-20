@@ -103,10 +103,45 @@ feature 'sign up' do
       click_button 'Save Fridge'
 
       expect(page).to have_content 'Fridge created successfully'
+      expect(page).to have_content 'Name Your Grocery List'
+    end
+
+    scenario 'I must provide a name to create the Grocery List' do
+      visit root_path
+      click_link 'Sign Up'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example6@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
+      fill_in 'Name', with: 'My Fridge'
+      click_button 'Save Fridge'
+      fill_in 'Name', with: 'Grocery List'
+      click_button 'Save Grocery List'
+
+      expect(page).to have_content 'Grocery list created successfully'
       expect(page).to have_content 'Add some categories'
     end
 
-    scenario 'I expect an error if I don\'t provide a name' do
+    scenario 'If I don\'t provide a name when creating my grocery list, I get an error' do
+      visit root_path
+      click_link 'Sign Up'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example6@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
+      fill_in 'Name', with: 'My Fridge'
+      click_button 'Save Fridge'
+      fill_in 'Name', with: ''
+      click_button 'Save Grocery List'
+
+      expect(page).to have_content 'Name can\'t be blank'
+    end
+
+    scenario 'I expect an error if I don\'t provide a name for my fridge' do
       visit root_path
       click_link 'Sign Up'
       fill_in 'First Name', with: 'John'
@@ -132,6 +167,8 @@ feature 'sign up' do
       click_button 'Sign up'
       fill_in 'Name', with: 'My Fridge'
       click_button 'Save Fridge'
+      fill_in 'Name', with: 'Grocery List'
+      click_button 'Save Grocery List'
       fill_in 'Name', with: 'Dairy'
       click_button 'Save Category'
 
