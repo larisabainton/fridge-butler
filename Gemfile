@@ -17,6 +17,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'mailcatcher'
 end
 
 group :test do
