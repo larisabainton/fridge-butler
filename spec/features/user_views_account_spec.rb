@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'sign up' do
   let!(:user) { FactoryGirl.create(:user, email: 'example@example.com') }
   let!(:other_user) { FactoryGirl.create(:user) }
+  let!(:grocerylist) { FactoryGirl.create(:grocerylist, user_id: user.id) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id) }
   let!(:fridgecategory) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
   let!(:grocery) { FactoryGirl.create(:grocery, fridgecategory_id: fridgecategory.id)}

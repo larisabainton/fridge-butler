@@ -3,6 +3,7 @@ class FridgesController < ApplicationController
     if user_signed_in?
       @user = current_user
       @fridge = @user.fridge
+      @grocerylist = @user.grocerylist
     else
       redirect_to new_user_session_path
     end

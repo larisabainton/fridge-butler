@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'add groceries' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
+  let!(:grocerylist) { FactoryGirl.create(:grocerylist, user_id: user.id) }
   let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
   let!(:vegetables) { FactoryGirl.create(:fridgecategory, name: 'Vegetables', fridge_id: fridge.id) }
   let!(:meat) { FactoryGirl.create(:fridgecategory, name: 'Meat') }

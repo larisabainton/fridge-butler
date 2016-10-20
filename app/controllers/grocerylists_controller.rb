@@ -1,4 +1,9 @@
 class GrocerylistsController < ApplicationController
+  def show
+    @user = current_user
+    @grocerylist = @user.grocerylist
+  end
+
   def new
     if user_signed_in?
       @grocerylist = Grocerylist.new
