@@ -1,9 +1,15 @@
 class ExpirationConfirmation < ApplicationMailer
-  default from: 'from@example.com'
+  include SendGrid
 
-  def expiration
-    @greeting = ''
+  def expired_email(grocery)
+    @grocery = grocery
+    @fridgecategory = @grocery.fridgecategory
+    @fridge = @fridgecategory.fridge
+    @user = @fridge.user
 
-    mail to: 'to@example.org'
+    mail(
+      to: @user.email,
+      subject: "Your #{@grocery.name} expires in two days!"
+    )
   end
 end

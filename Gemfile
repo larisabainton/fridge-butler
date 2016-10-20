@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'foundation-rails'
 gem 'react-rails'
+gem 'sendgrid-ruby'
 
 group :development, :test do
   gem 'capybara'
