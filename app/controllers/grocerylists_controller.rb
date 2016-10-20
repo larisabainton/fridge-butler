@@ -2,6 +2,9 @@ class GrocerylistsController < ApplicationController
   def show
     @user = current_user
     @grocerylist = @user.grocerylist
+    @groceries = @grocerylist.groceries
+    @fridgecategories = @user.fridgecategories
+    @grocery = Grocery.new
   end
 
   def new
