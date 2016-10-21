@@ -11,7 +11,6 @@ class FridgecategoriesController < ApplicationController
       @categories << Fridgecategory.new(name: 'Snacks')
 
       @fridgecategory = Fridgecategory.new
-      binding.pry
     else
       flash[:notice] = "Please sign in"
       redirect_to new_user_session_path

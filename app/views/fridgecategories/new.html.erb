@@ -1,6 +1,21 @@
 <h1>Add some categories</h1>
 
+<h3>Tip: if you don't want to use categories, just call this "Fridge"</h3>
 <%= form_for @fridgecategory do |f| %>
-  <%= f.collection_check_boxes(:name, @categories, :name, :name) %>
-  <%= f.submit 'Add Categories' %>
+  <%= f.text_area :name, placeholder: "Name"%>
+  <%= f.submit "Save Category" %>
 <% end %>
+<!-- <% @categories = []
+@categories << Fridgecategory.create(name: 'Dairy', fridge_id: 4)
+@categories << Fridgecategory.create(name: 'Meat', fridge_id: 4)
+@categories << Fridgecategory.create(name: 'Vegetables', fridge_id: 4)
+@categories << Fridgecategory.create(name: 'Fruits', fridge_id: 4)
+@categories << Fridgecategory.create(name: 'Bread', fridge_id: 4)
+@categories << Fridgecategory.create(name: 'Dessert', fridge_id: 4)
+@categories << Fridgecategory.create(name: 'Snacks', fridge_id: 4)
+@options = @categories.map { |c| [c.name, c.id] } %>
+
+<%= form_for @fridgecategory do |f| %>
+  <%= f.collection_check_boxes(options_for_select(@options)) %>
+  <%= f.submit 'Add Categories' %>
+<% end %> -->
