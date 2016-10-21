@@ -1,8 +1,11 @@
 <%= @grocerylist.name %>
 
+<ul>
 <% @groceries.each do |g| %>
-  <%= g.name %>
+  <li><%= g.name %> </li>
+  <%= link_to 'Accept', accept_grocery_path(g) %>
 <% end %>
+</ul>
 
 <h2>Add a Grocery:</h2>
 <div class="new-grocery">

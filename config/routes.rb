@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :fridges
   resources :users
   resources :fridgecategories, except: [:index, :show]
-  resources :groceries, except: [:index, :show]
+  resources :groceries, except: [:index, :show] do
+    member do
+      get 'accept'
+      post 'accept'
+    end
+  end
   resources :grocerylists
   resources :recipes
   # The priority is based upon order of creation: first created -> highest priority.

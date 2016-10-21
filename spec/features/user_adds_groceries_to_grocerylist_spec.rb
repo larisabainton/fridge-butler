@@ -55,5 +55,16 @@ feature 'adds groceries to grocerylist' do
 
       expect(page).to have_content('Fridgecategory can\'t be blank, Fridgecategory is not a number')
     end
+
+    scenario 'After I add a grocery, it appears on the grocery list page' do
+      expect(page).to have_content(grocery.name)
+    end
+
+    scenario 'After I add a grocery, it does not appear on the fridge page' do
+      click_link 'fridgeBUTLER'
+      click_link 'My Fridge'
+
+      expect(page).to_not have_content(grocery.name)
+    end
   end
 end

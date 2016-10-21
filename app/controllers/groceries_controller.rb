@@ -14,10 +14,16 @@ class GroceriesController < ApplicationController
     @user = current_user
     @fridge = @user.fridge
     @fridgecategories = @fridge.fridgecategories
+    @grocerylist = @user.grocerylist
 
     if @grocery.save
       flash[:notice] = "Grocery added successfully"
-      redirect_to fridge_path(@fridge)
+      if @grocery.exp_date.nil?
+        @grocery.update_attributes(grocerylist_id: @grocerylist.id)
+        redirect_to grocerylist_path(@grocerylist)
+      else
+        redirect_to fridge_path(@fridge)
+      end
     else
       flash[:notice] = @grocery.errors.full_messages.join(', ')
       render 'new'
@@ -69,9 +75,24 @@ class GroceriesController < ApplicationController
     end
   end
 
+  def accept
+    @user = current_user
+    @grocery = Grocery.find(params[:id])
+    @grocerylist = @grocery.grocerylist
+
+    if !@grocery.grocerylist_id.nil?
+      @grocery.update_attributes(grocerylist_id: nil)
+      flash[:notice] = 'You have added your grocery to your fridge'
+      redirect_to @grocerylist
+    else
+      flash[:notice] = 'This grocery is not in the grocerylist'
+      redirect_to root_path
+    end
+  end
+
   private
 
   def grocery_params
-    params.require(:grocery).permit(:name, :quantity, :exp_date, :fridgecategory_id)
+    params.require(:grocery).permit(:name, :quantity, :exp_date, :fridgecategory_id, :grocerylist_id)
   end
 end
