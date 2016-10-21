@@ -1,15 +1,6 @@
 class FridgecategoriesController < ApplicationController
   def new
     if user_signed_in?
-      @categories = []
-      @categories << Fridgecategory.new(name: 'Dairy')
-      @categories << Fridgecategory.new(name: 'Meat')
-      @categories << Fridgecategory.new(name: 'Vegetables')
-      @categories << Fridgecategory.new(name: 'Fruits')
-      @categories << Fridgecategory.new(name: 'Bread')
-      @categories << Fridgecategory.new(name: 'Dessert')
-      @categories << Fridgecategory.new(name: 'Snacks')
-
       @fridgecategory = Fridgecategory.new
     else
       flash[:notice] = "Please sign in"
