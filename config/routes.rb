@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
-  root "fridges#index"
+  root "pages#show", page: "home"
 
   resources :fridges
   resources :users
