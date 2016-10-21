@@ -3,6 +3,7 @@ class FridgesController < ApplicationController
     if user_signed_in?
       @user = current_user
       @fridge = @user.fridge
+      @grocerylist = @user.grocerylist
     else
       redirect_to new_user_session_path
     end
@@ -31,7 +32,7 @@ class FridgesController < ApplicationController
 
     if @fridge.save
       flash[:notice] = "Fridge created successfully"
-      redirect_to new_fridgecategory_path
+      redirect_to new_grocerylist_path
     else
       flash[:notice] = @fridge.errors.full_messages.join(', ')
       render 'new'

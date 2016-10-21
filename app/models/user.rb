@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :fridge, dependent: :destroy
+  has_one :grocerylist, dependent: :destroy
+  has_many :recipes, dependent: :destroy
+  has_many :fridgecategories, through: :fridge
 
   validates :first_name, presence: true
   validates :last_name, presence: true

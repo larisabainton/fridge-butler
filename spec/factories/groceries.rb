@@ -4,5 +4,6 @@ FactoryGirl.define do
     quantity 1
     exp_date 'May 1, 2017'
     fridgecategory_id 1
+    grocerylist_id nil
   end
 end
