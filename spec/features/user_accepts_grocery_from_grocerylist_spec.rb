@@ -20,6 +20,12 @@ feature 'accepts groceries' do
       expect(page).to have_content('Accept')
     end
 
+    pending scenario 'When I click the accept button on the page, I must fill in an expiration date' do
+      click_link 'Accept'
+
+      expect(page).to have_content('Expiration Date')
+    end
+
     scenario 'When I click the accept button on the page, the grocery disappears from the grocerylist page' do
       click_link 'Accept'
 

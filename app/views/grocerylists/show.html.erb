@@ -3,7 +3,9 @@
 <ul>
 <% @groceries.each do |g| %>
   <li><%= g.name %> </li>
-  <%= link_to 'Accept', accept_grocery_path(g) %>
+  <div class="accept-button">
+    <%= link_to 'Accept', accept_grocery_path(g) %>
+  </div>
 <% end %>
 </ul>
 
