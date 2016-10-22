@@ -27,9 +27,11 @@
         <% if user_signed_in? %>
           <span class = "option"><%= link_to "LOG OFF", destroy_user_session_path, method: :delete %></span>
           <span class = "option"><%= link_to 'MY ACCOUNT', user_path(current_user) %></span>
+          <span class = "option"> <%= link_to 'LEARN MORE', pages_path %> </span>
         <% else %>
           <span class = "option"><%= link_to "SIGN UP", new_user_registration_path %></span>
           <span class = "option"><%= link_to "LOG IN", new_user_session_path %></span>
+          <span class = "option"> <%= link_to 'LEARN MORE', pages_path %> </span>
         <% end %>
       </section>
   </div>

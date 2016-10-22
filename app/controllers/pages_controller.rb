@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  def show
+  def index
     if user_signed_in?
       @get_started_link = fridges_path
       @logo_link = fridges_path
@@ -7,7 +7,15 @@ class PagesController < ApplicationController
       @get_started_link = new_user_session_path
       @logo_link = root_path
     end
+  end
 
-    render template: "pages/#{params[:page]}"
+  def show
+    if user_signed_in?
+      redirect_to fridges_path
+    else
+      @get_started_link = new_user_session_path
+      @logo_link = root_path
+      render template: "pages/#{params[:page]}"
+    end
   end
 end

@@ -1,0 +1,28 @@
+.fridges-index {
+  h1 {
+    font-family: Eczar;
+    margin: 3rem;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding: 12rem;
+    text-align: center;
+    color: white;
+  }
+
+  #fridge {
+    background-image: url('salad.jpg');
+  }
+
+  #grocerylist {
+    background-image: url('kitchen-tools.jpg');
+  }
+
+  #recipes {
+    background-image: url('pie.jpg');
+  }
+  
+  a {
+    color: black;
+    font-weight: bold;
+  }
+}

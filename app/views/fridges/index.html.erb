@@ -1,3 +1,5 @@
-<h1><%= link_to 'My Fridge', fridge_path(@fridge) unless @fridge.blank? %></h1>
-<h1><%= link_to 'Grocery List', grocerylist_path(@grocerylist) unless @grocerylist.blank? %></h1>
-<h1><%= link_to 'Recipes', recipes_path %></h1>
+<div class="fridges-index">
+  <h1 id = "fridge"><%= link_to 'My Fridge', fridge_path(@fridge) unless @fridge.blank? %></h1>
+  <h1 id = "grocerylist"><%= link_to 'Grocery List', grocerylist_path(@grocerylist) unless @grocerylist.blank? %></h1>
+  <h1 id = "recipes"><%= link_to 'Recipes', recipes_path %></h1>
+</div>
