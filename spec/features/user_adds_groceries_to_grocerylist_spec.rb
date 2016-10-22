@@ -1,21 +1,18 @@
 require 'rails_helper'
 
-feature 'add groceries' do
+feature 'adds groceries to grocerylist' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
   let!(:grocerylist) { FactoryGirl.create(:grocerylist, user_id: user.id) }
-  let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
-  let!(:vegetables) { FactoryGirl.create(:fridgecategory, name: 'Vegetables', fridge_id: fridge.id) }
-  let!(:meat) { FactoryGirl.create(:fridgecategory, name: 'Meat') }
-  let!(:milk) { FactoryGirl.create(:grocery, fridgecategory_id: dairy.id) }
-  let!(:cheese) { FactoryGirl.create(:grocery, name: 'Cheese', fridgecategory_id: dairy.id) }
+  let!(:fridgecategory) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
+  let!(:grocery) { FactoryGirl.create(:grocery, fridgecategory_id: fridgecategory.id, grocerylist_id: grocerylist.id)}
 
   before(:each) do
     visit root_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
-    click_on 'My Fridge'
+    click_link 'Grocery List'
   end
 
   context 'As a user' do
@@ -23,7 +20,7 @@ feature 'add groceries' do
       within "div.new-grocery" do
         fill_in 'Enter a name', with: 'Carrot'
         fill_in 'Enter an amount', with: '2'
-        choose vegetables.name
+        choose fridgecategory.name
 
         click_button 'Add Grocery'
       end
@@ -51,11 +48,23 @@ feature 'add groceries' do
       expect(page).to have_content('Name can\'t be blank')
     end
 
-    scenario 'I must be logged in to create a fridge category' do
-      click_link 'Log Off'
-      visit '/groceries/new'
+    scenario 'I get an error if I don\'t provide a fridgecategory' do
+      fill_in 'Enter a name', with: 'Carrot'
+      fill_in 'Enter an amount', with: 2
+      click_button 'Add Grocery'
 
-      expect(page).to have_content('Please sign in')
+      expect(page).to have_content('Fridgecategory can\'t be blank, Fridgecategory is not a number')
+    end
+
+    scenario 'After I add a grocery, it appears on the grocery list page' do
+      expect(page).to have_content(grocery.name)
+    end
+
+    scenario 'After I add a grocery, it does not appear on the fridge page' do
+      click_link 'fridgeBUTLER'
+      click_link 'My Fridge'
+
+      expect(page).to_not have_content(grocery.name)
     end
   end
 end

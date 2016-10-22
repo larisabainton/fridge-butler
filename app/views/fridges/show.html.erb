@@ -9,9 +9,11 @@
     <%= link_to 'Delete Category', fc, method: :delete, data: { confirm: 'You sure?' } %>
     <ul>
       <% fc.groceries.each do |grocery| %>
-        <li> <%= grocery.name %>
-        <%= link_to 'Edit Grocery', edit_grocery_path(grocery) %>
-         <%= link_to 'Delete Grocery', grocery, method: :delete, data: { confirm: 'You sure?' } %> </li>
+        <% if grocery.grocerylist_id == nil %>
+          <li> <%= grocery.name %>
+          <%= link_to 'Edit Grocery', edit_grocery_path(grocery) %>
+           <%= link_to 'Delete Grocery', grocery, method: :delete, data: { confirm: 'You sure?' } %> </li>
+         <% end %>
       <% end %>
     </ul>
   <% end %>
