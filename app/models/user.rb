@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :groceries, through: :fridgecategories
 
   has_one :grocerylist, dependent: :destroy
-  has_many :recipes, dependent: :destroy
+  has_many :recipes, dependent: :destroy 
 
   validates :first_name, presence: true
   validates :last_name, presence: true
