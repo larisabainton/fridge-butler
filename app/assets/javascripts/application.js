@@ -14,8 +14,3 @@
 //= require jquery_ujs
 //= require foundation
 //= require react
-//= require bundle.js
-
-$(document).foundation();
-
-$(function(){ $(document).foundation(); });
