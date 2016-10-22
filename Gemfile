@@ -9,6 +9,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'react-rails'
 gem 'puma'
+gem 'httparty'
 
 group :development, :test do
   gem 'capybara'
