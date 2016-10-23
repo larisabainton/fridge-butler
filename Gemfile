@@ -9,7 +9,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'react-rails'
 gem 'puma'
-gem 'httparty'
+gem 'figaro'
 
 group :development, :test do
   gem 'capybara'
@@ -18,6 +18,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :test do
