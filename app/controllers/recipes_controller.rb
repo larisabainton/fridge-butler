@@ -3,7 +3,13 @@ require 'json'
 class RecipesController < ApplicationController
   def index
     @groceries = Grocery.where(grocerylist_id: nil)
-    @recipes = get_recipes('chicken')
+    @string = ""
+    @groceries.each do |g|
+      unless params[g.name].nil?
+        @string += "#{g.name}%20"
+      end
+    end
+    @recipes = get_recipes(@string)
   end
 
   def get_recipes(groceries)
