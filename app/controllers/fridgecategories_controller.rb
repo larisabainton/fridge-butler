@@ -1,4 +1,14 @@
 class FridgecategoriesController < ApplicationController
+  def index
+    @fridge = current_user.fridge
+    params.each do |key, value|
+      if value == "1" && key != "id"
+        Fridgecategory.create(fridge_id: @fridge.id, name: key)
+      end
+    end
+    redirect_to @fridge
+  end
+
   def new
     if user_signed_in?
       @fridgecategory = Fridgecategory.new

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :fridges
   resources :users
-  resources :fridgecategories, except: [:index, :show]
+  resources :fridgecategories, except: [:show] do
+    member do
+      post 'index'
+    end
+  end
   resources :groceries, except: [:show] do
     member do
       get 'accept'
@@ -14,7 +18,6 @@ Rails.application.routes.draw do
   resources :grocerylists
   resources :recipes do
     member do
-      get 'index'
       post 'index'
     end
   end

@@ -169,8 +169,8 @@ feature 'sign up' do
       click_button 'Save Fridge'
       fill_in 'Name', with: 'Grocery List'
       click_button 'Save Grocery List'
-      fill_in 'Name', with: 'Dairy'
-      click_button 'Save Category'
+      check_box 'Dairy'
+      click_button 'Add Categories'
 
       expect(page).to have_content('Category added successfully')
       expect(page).to have_content('My Fridge')
