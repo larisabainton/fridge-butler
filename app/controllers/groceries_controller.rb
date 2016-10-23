@@ -1,5 +1,8 @@
 class GroceriesController < ApplicationController
-
+  def index
+    @groceries = Grocery.where(grocerylist_id: nil)
+  end
+  
   def new
     if user_signed_in?
       @grocery = Grocery.new

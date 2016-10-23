@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :fridges
   resources :users
   resources :fridgecategories, except: [:index, :show]
-  resources :groceries, except: [:index, :show] do
+  resources :groceries, except: [:show] do
     member do
       get 'accept'
       post 'accept'

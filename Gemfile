@@ -9,7 +9,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'react-rails'
 gem 'puma'
-gem 'figaro'
+gem 'json'
 
 group :development, :test do
   gem 'capybara'
