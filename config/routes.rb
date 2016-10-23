@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   resources :fridges
   resources :users
-  resources :fridgecategories, except: [:show] do
+  resources :fridgecategories, except: [:index, :show] do
     member do
-      post 'index'
+      post 'initial'
+      get 'initial'
     end
   end
   resources :groceries, except: [:show] do

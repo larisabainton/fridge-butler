@@ -1,5 +1,5 @@
 class FridgecategoriesController < ApplicationController
-  def index
+  def initial
     @fridge = current_user.fridge
     params.each do |key, value|
       if value == "1" && key != "id"

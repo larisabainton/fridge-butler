@@ -169,7 +169,7 @@ feature 'sign up' do
       click_button 'Save Fridge'
       fill_in 'Name', with: 'Grocery List'
       click_button 'Save Grocery List'
-      check_box 'Dairy'
+      check 'Dairy'
       click_button 'Add Categories'
 
       expect(page).to have_content('Category added successfully')

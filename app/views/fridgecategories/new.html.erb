@@ -1,6 +1,6 @@
 <h1>Add some categories</h1>
 
-<%= form_tag '/fridgecategories/1/index' do %>
+<%= form_tag '/fridgecategories/1/initial' do %>
   <%= check_box_tag 'Bread' %>
   <%= label_tag 'Bread' %>
   <%= check_box_tag 'Beverages' %>
@@ -23,10 +23,3 @@
   <%= label_tag 'Vegetables' %>
   <%= submit_tag 'Add Categories' %>
 <% end %>
-
-
-<!-- <h3>Tip: if you don't want to use categories, just call this "Fridge"</h3> -->
-<!-- <%= form_for @fridgecategory do |f| %>
-  <%= f.text_area :name, placeholder: "Name"%>
-  <%= f.submit "Save Category" %>
-<% end %> -->
