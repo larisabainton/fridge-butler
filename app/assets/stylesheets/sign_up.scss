@@ -9,6 +9,12 @@
     font-family: Eczar;
   }
 
+  p {
+    padding: 1rem;
+    font-family: Eczar;
+    text-align: center;
+  }
+
   .field {
     float: center;
   }
@@ -26,6 +32,7 @@
 
   input {
     color: black;
+    float: center;
   }
 
   .bottom {
@@ -41,4 +48,12 @@
     }
 
   }
+}
+
+.new_fridge {
+  padding: 0 1rem;
+}
+
+.new_grocerylist {
+  padding: 0 1rem;
 }

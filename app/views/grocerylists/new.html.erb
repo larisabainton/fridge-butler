@@ -1,6 +1,10 @@
-<h1>Name Your Grocery List</h1>
-
-<%= form_for @grocerylist do |f| %>
-  <%= f.text_area :name, placeholder: "Name"%>
-  <%= f.submit "Save Grocery List" %>
-<% end %>
+<div class="sign-up">
+  <h2>Name Your Grocery List</h2>
+  <p>
+    You'll be able to keep groceries in your grocery list and add them to your fridge later on by pressing the "accept" button.
+  </p>
+  <%= form_for @grocerylist do |f| %>
+    <%= f.text_area :name, placeholder: "Name"%>
+    <%= f.submit "Save Grocery List" %>
+  <% end %>
+</div>
