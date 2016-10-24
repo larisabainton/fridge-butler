@@ -35,14 +35,12 @@ feature 'sign up' do
       expect(page).to have_content(user.first_name)
       expect(page).to have_content(user.last_name)
       expect(page).to have_content(user.email)
-      expect(page).to have_content('Edit')
-      expect(page).to have_content('Delete')
     end
 
 
     scenario 'I can delete my account' do
       click_link 'MY ACCOUNT'
-      click_link 'Delete'
+      click_button 'Delete'
 
       expect(page).to have_xpath('//a[contains(., sign_in)]')
       expect(Grocery.all).to_not include(grocery)

@@ -29,7 +29,7 @@ feature 'sign up' do
     end
 
     scenario 'I can delete my fridgecategory' do
-      within "div.delete-fc" do
+      within "h3.delete-fc" do
         click_link ''
       end
 

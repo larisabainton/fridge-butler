@@ -15,7 +15,7 @@ feature 'edit user account' do
   context 'As a user' do
     scenario 'I can edit my user information' do
       visit user_path(user)
-      click_link 'Edit'
+      click_button 'Edit'
 
       fill_in 'First name', with: 'Carl'
       click_button 'Save Changes'

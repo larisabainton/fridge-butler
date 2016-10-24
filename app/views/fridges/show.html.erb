@@ -1,47 +1,46 @@
 <div class="fridge-page">
-  <!-- <%= image_tag('fruits.jpg') %> -->
-  <p>
-    <h1><%= link_to @fridge.name, edit_fridge_path(@fridge) %></h1>
-  </p>
-  <ul>
-    <% @fridgecategories.each do |fc| %>
-      <h3><%= link_to fc.name, edit_fridgecategory_path(fc) %>
-        <div class="delete-fc">
+  <div class="list">
+    <p>
+      <h1><%= link_to @fridge.name, edit_fridge_path(@fridge) %></h1>
+    </p>
+    <ul>
+      <% @fridgecategories.each do |fc| %>
+        <h3 class = "delete-fc"><%= link_to fc.name, edit_fridgecategory_path(fc) %>
           <%= link_to '', fc, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
-        </div>
-      </h3>
-      <ul>
-        <% @groceries = fc.groceries.order(name: :asc) %>
-        <% @groceries.each do |grocery| %>
-          <% if grocery.grocerylist_id == nil %>
-            <li> <%= link_to grocery.name, edit_grocery_path(grocery) %>
-              <div class="delete-grocery">
+        </h3>
+        <ul>
+          <% @groceries = fc.groceries.order(name: :asc) %>
+          <% @groceries.each do |grocery| %>
+            <% if grocery.grocerylist_id == nil %>
+              <li class = "delete-grocery"> <%= link_to grocery.name, edit_grocery_path(grocery) %>
                 <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
-              </div>
-            </li>
-           <% end %>
-        <% end %>
-      </ul>
-    <% end %>
-  </ul>
-
-  <h2>Add a Category:</h2>
-  <%= form_for @fridgecategory do |f| %>
-    <%= f.text_area :name, placeholder: "Name"%>
-    <%= f.submit "Save Category" %>
-  <% end %>
-
-  <h2>Add a Grocery:</h2>
-  <div class="new-grocery">
-    <%= form_for @grocery do |f| %>
-      <%= f.text_area :name, placeholder: 'Enter a name' %>
-      <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
-      <%= f.label :fridgecategory_id, "Category:" %>
-      <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
-      <%= f.label :exp_date, "Expires:" %>
-      <%= f.date_select :exp_date, order: [:month, :day, :year] %>
-      <%= f.submit "Add Grocery" %>
-    <% end %>
+              </li>
+             <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
   </div>
+  <div class="add-things">
+    <div class="add-category">
+      <h2>Add a Category:</h2>
+      <%= form_for @fridgecategory do |f| %>
+        <%= f.text_area :name, placeholder: "Name"%>
+        <%= f.submit "Save Category" %>
+      <% end %>
+    </div>
 
+    <h2>Add a Grocery:</h2>
+    <div class="new-grocery">
+      <%= form_for @grocery do |f| %>
+        <%= f.text_area :name, placeholder: 'Enter a name' %>
+        <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
+        <%= f.label :fridgecategory_id, "Category:" %>
+        <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
+        <%= f.label :exp_date, "Expires:" %>
+        <%= f.date_select :exp_date, order: [:month, :day, :year] %>
+        <%= f.submit "Add Grocery" %>
+      <% end %>
+    </div>
+  </div>
 </div>

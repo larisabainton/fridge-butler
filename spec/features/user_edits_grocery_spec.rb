@@ -43,7 +43,7 @@ feature 'sign up' do
     end
 
     scenario 'I can delete my grocery' do
-      within "div.delete-grocery" do
+      within "li.delete-grocery" do
         click_link ''
       end
 

@@ -1,7 +1,6 @@
 .fridges-index {
   h1 {
     font-family: Eczar;
-    text-shadow: $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px, $dark-gray 0px 0px 1px;
     margin: 3rem;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -12,14 +11,17 @@
 
   #fridge {
     background-image: url('salad.jpg');
+    text-shadow: #2a5740 0px 0px 1px, #2a5740 0px 0px 1px, #2a5740 0px 0px 1px, #2a5740 0px 0px 1px, #2a5740 0px 0px 1px, #2a5740 0px 0px 1px, #2a5740 0px 0px 1px, #2a5740 0px 0px 1px;
   }
 
   #grocerylist {
     background-image: url('kitchen-tools.jpg');
+    text-shadow: #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px, #6b6f8f 0px 0px 1px;
   }
 
   #recipes {
     background-image: url('pie.jpg');
+    text-shadow: #4b122f 0px 0px 1px, #4b122f 0px 0px 1px, #4b122f 0px 0px 1px, #4b122f 0px 0px 1px, #4b122f 0px 0px 1px, #4b122f 0px 0px 1px, $dark-gray 0px 0px 1px, #4b122f 0px 0px 1px;
   }
 
   a {
