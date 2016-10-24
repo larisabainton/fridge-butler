@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
   end
 
   def get_recipes(groceries)
-    uri = URI("http://food2fork.com/api/search?key=#{ENV['F2F_API_KEY']}&q=#{groceries.to_s}")
+    uri = URI("http://food2fork.com/api/search?key=#{ENV['F2F_API_KEY']}&q=#{groceries.to_s}&sort=r")
     response = Net::HTTP.get_response(uri)
     j = ActiveSupport::JSON
     hash = j.decode(response.body)

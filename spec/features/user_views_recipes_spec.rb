@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'spec_helper'
 
-feature 'view recipes' do
+feature 'view recipes', vcr: true do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
   let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
@@ -19,8 +20,6 @@ feature 'view recipes' do
   end
 
   pending context 'As a user' do
-    scenario 'I can see the recipe index page' do
-    end
 
     scenario 'I can select which groceries I want to search' do
     end
