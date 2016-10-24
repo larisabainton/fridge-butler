@@ -12,7 +12,7 @@ class FridgesController < ApplicationController
   def show
     @user = current_user
     @fridge = @user.fridge
-    @fridgecategories = @fridge.fridgecategories
+    @fridgecategories = @fridge.fridgecategories.order(name: :asc)
     @fridgecategory = Fridgecategory.new
     @grocery = Grocery.new
   end

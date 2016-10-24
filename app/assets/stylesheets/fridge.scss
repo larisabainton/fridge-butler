@@ -1,0 +1,74 @@
+.fridge-page {
+  font-family: Eczar;
+  text-align: center;
+
+  h1 {
+    font-family: Eczar;
+    border: white solid 3px;
+    padding: 0.5rem;
+    margin: 0 4rem;
+    background-image: url('fruits.jpg');
+    color: white;
+    text-shadow: #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px;
+  }
+
+  h1 :link {
+    color: white
+  }
+
+  h1 :visited {
+    color: white
+  }
+
+  h2 {
+    font-family: Eczar;
+  }
+
+  h3 {
+    font-family: Eczar;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  :link {
+    color: black
+  }
+
+  :visited {
+    color: black;
+  }
+
+  .fa-times {
+    font-size: 1rem;
+    color: $medium-gray;
+    float: center;
+  }
+}
+
+.list {
+  border: black solid 1px;
+  padding: 1rem;
+}
+
+.add-things {
+  background-color: #3D3288;
+  color: white;
+  padding: 1rem;
+
+  label {
+    color: white;
+    font-size: 1.07rem;
+  }
+
+  input {
+    color: black;
+  }
+
+  .add-category {
+    margin-bottom: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: white solid 1px;
+  }
+}

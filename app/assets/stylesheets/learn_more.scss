@@ -1,0 +1,48 @@
+body {
+  background-color: $light-gray;
+}
+
+.learn-more {
+  font-family: Cambria;
+
+  h1 {
+    font-family: Eczar;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  img {
+    padding: 0rem;
+  }
+
+  .row {
+    border: $dark-gray solid 0.5px;
+  }
+
+  h3 {
+    text-align: center;
+    font-family: Oswald;
+    padding: 1rem;
+    // color: #BAC9A9
+  }
+
+  p {
+    color: #666666;
+  }
+}
+
+.get-started {
+  font-family: Eczar;
+  padding: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  background-color: #C48E35;
+
+  :link {
+    color: white;
+  }
+
+  :visited {
+    color: white;
+  }
+}

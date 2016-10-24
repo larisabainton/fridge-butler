@@ -1,12 +1,10 @@
 .title-area {
-  background-color: #4ca5ff;
   color: white;
-  font-size: 4rem;
-  text-align: center;
+  font-size: 2rem;
 
   .fridge {
     font-family: Great Vibes;
-    font-size: 4.5rem;
+    font-size: 2.5rem;
   }
 
   .butler {
@@ -14,9 +12,11 @@
   }
 }
 
-.top-bar li {
+.top-bar .option {
   list-style: none;
-  background-color: #4ca5ff;
+  font-family: Eczar;
+  padding: 1rem;
+  float: right;
 
   :link {
     color: white;
@@ -25,4 +25,12 @@
   :visited {
     color: white;
   }
+}
+
+.alert-or-notice {
+  font-family: Eczar;
+  background-color: #E0AE5B;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
 }
