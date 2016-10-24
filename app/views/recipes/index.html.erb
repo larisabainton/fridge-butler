@@ -1,3 +1,7 @@
-<% @recipes.each do |r| %>
-  <%= r.title %>
+<% if @recipes.empty? %>
+  <h3>No Recipes were found!</h3>
+<% else %>
+  <% @recipes.each do |r| %>
+    <%= r.title %>
+  <% end %>
 <% end %>

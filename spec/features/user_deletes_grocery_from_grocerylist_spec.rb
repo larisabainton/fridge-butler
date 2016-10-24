@@ -23,7 +23,7 @@ feature 'sign up' do
   end
 
   scenario 'I can delete a grocery from my grocerylist' do
-    within 'div.accept-button' do
+    within 'div.delete-button' do
       click_link ''
     end
 

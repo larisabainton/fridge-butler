@@ -6,7 +6,9 @@
     <% @groceries.each do |g| %>
       <li><%= link_to g.name, edit_grocery_path(g) %> </li>
       <div class="accept-button">
-        <%= link_to 'Accept', accept_grocery_path(g) %>
+        <%= link_to '', accept_grocery_path(g), class: 'fa fa-check' %>
+      </div>
+      <div class="delete-button">
         <%= link_to '', g, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
       </div>
     <% end %>
