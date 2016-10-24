@@ -4,7 +4,7 @@
 
     <ul>
     <% @groceries.each do |g| %>
-      <li><%= g.name %> </li>
+      <li><%= link_to g.name, edit_grocery_path(g) %> </li>
       <div class="accept-button">
         <%= link_to 'Accept', accept_grocery_path(g) %>
         <%= link_to '', g, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>

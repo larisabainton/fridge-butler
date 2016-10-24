@@ -2,7 +2,7 @@ class GroceriesController < ApplicationController
   def index
     @groceries = Grocery.where(grocerylist_id: nil)
   end
-  
+
   def new
     if user_signed_in?
       @grocery = Grocery.new
@@ -50,11 +50,17 @@ class GroceriesController < ApplicationController
     @fridgecategory = @grocery.fridgecategory
     @fridge = @fridgecategory.fridge
     @fridgecategories = @fridge.fridgecategories
+    @user = current_user
+    @grocerylist = @user.grocerylist
 
     if @fridge.user == current_user
       if @grocery.update_attributes(grocery_params)
         flash[:notice] = "Grocery edited successfully"
-        redirect_to @fridge
+        if @grocery.grocerylist.nil?
+          redirect_to @fridge
+        else
+          redirect_to @grocerylist
+        end
       else
         flash[:notice] = @grocery.errors.full_messages.join(', ')
         render 'edit'
