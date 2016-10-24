@@ -1,13 +1,19 @@
 .fridge-page {
-  img {
-    margin: 3rem;
-    height: 30rem;
-    width: auto;
-  }
-
+  font-family: Eczar;
   text-align: center;
-
+  h1 {
+    font-family: Eczar;
+  }
+  h3 {
+    font-family: Eczar;
+  }
   li {
     list-style: none;
   }
+}
+
+.fa-times {
+  font-size: 1rem;
+  color: $medium-gray;
+  float: center;
 }
