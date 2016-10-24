@@ -2,7 +2,9 @@ require 'json'
 
 class RecipesController < ApplicationController
   def index
-    @groceries = Grocery.where(grocerylist_id: nil)
+    @user = current_user
+    @fridge = @user.fridge
+    @groceries = @fridge.groceries.where(grocerylist_id: nil)
     @string = ""
     @groceries.each do |g|
       unless params[g.name].nil?

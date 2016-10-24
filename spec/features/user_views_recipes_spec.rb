@@ -19,12 +19,16 @@ feature 'view recipes', vcr: true do
     click_on 'Recipes'
   end
 
-  pending context 'As a user' do
+  context 'As a user' do
 
-    scenario 'I can select which groceries I want to search' do
+    pending scenario 'I see only the groceries that I have' do
     end
 
-    scenario 'I get back a list of recipes' do
+    pending scenario 'I can select which groceries I want to search' do
+
+    end
+
+    pending scenario 'I get back a list of recipes' do
     end
   end
 end
