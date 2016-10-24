@@ -5,13 +5,20 @@
   </p>
   <ul>
     <% @fridgecategories.each do |fc| %>
-      <h3><%= link_to fc.name, edit_fridgecategory_path(fc) %> <%= link_to '', fc, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %></h3>
+      <h3><%= link_to fc.name, edit_fridgecategory_path(fc) %>
+        <div class="delete-fc">
+          <%= link_to '', fc, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+        </div>
+      </h3>
       <ul>
         <% @groceries = fc.groceries.order(name: :asc) %>
         <% @groceries.each do |grocery| %>
           <% if grocery.grocerylist_id == nil %>
             <li> <%= link_to grocery.name, edit_grocery_path(grocery) %>
-             <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %> </li>
+              <div class="delete-grocery">
+                <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+              </div>
+            </li>
            <% end %>
         <% end %>
       </ul>

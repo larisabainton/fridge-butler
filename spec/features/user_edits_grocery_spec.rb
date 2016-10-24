@@ -12,6 +12,7 @@ feature 'sign up' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -21,7 +22,7 @@ feature 'sign up' do
   context 'As a user' do
     scenario 'I can edit my grocery' do
       old_name = grocery.name
-      click_link 'Edit Grocery'
+      click_link grocery.name
 
       expect(page).to have_xpath('//a[contains(., edit)]')
 
@@ -32,8 +33,8 @@ feature 'sign up' do
       expect(page).to_not have_content(old_name)
     end
 
-    scenario 'I must input valid info to my grocery' do 
-      click_link 'Edit Grocery'
+    scenario 'I must input valid info to my grocery' do
+      click_link grocery.name
 
       fill_in 'Enter a name', with: ''
       click_button 'Save Grocery'
@@ -42,7 +43,9 @@ feature 'sign up' do
     end
 
     scenario 'I can delete my grocery' do
-      click_link 'Delete Grocery'
+      within "div.delete-grocery" do
+        click_link ''
+      end
 
       expect(page).to_not have_content(grocery.name)
     end

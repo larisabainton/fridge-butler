@@ -6,6 +6,7 @@ feature 'edit user account' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
