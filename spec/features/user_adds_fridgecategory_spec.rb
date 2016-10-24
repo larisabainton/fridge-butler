@@ -12,6 +12,7 @@ feature 'add fridgecategory' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -34,7 +35,7 @@ feature 'add fridgecategory' do
     end
 
     scenario 'I must be logged in to create a fridge category' do
-      click_link 'Log Off'
+      click_link 'LOG OFF'
       visit '/fridgecategories/new'
 
       expect(page).to have_content('Please sign in')

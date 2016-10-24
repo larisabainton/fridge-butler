@@ -1,6 +1,11 @@
-<h1>Now...Give Your Fridge a Name!</h1>
+<div class="sign-up">
+  <h2>Now...Give Your Fridge a Name!</h2>
+  <p>
+    This can either be something simple like "Fridge", or more customized like "Jane's Fridge."
+  </p>
 
-<%= form_for @fridge do |f| %>
-  <%= f.text_area :name, placeholder: "Name"%>
-  <%= f.submit "Save Fridge" %>
-<% end %>
+  <%= form_for @fridge do |f| %>
+    <%= f.text_area :name, placeholder: "Name"%>
+    <%= f.submit "Save Fridge" %>
+  <% end %>
+</div>

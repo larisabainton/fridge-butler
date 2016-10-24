@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
   <link href="foundation-overrides.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -18,26 +18,30 @@
 <body>
   <div class="top-bar">
     <%= link_to root_path do %>
-      <div class="title-area small-9 columns">
+      <div class="title-area small-6 columns">
+          <i class="fa fa-glass" aria-hidden="true"></i>
           <span class="fridge">fridge</span><span class="butler">BUTLER</span>
       </div>
     <% end %>
-      <ul class = "right small-2 columns">
+      <section class = "right small-6 columns">
         <% if user_signed_in? %>
-          <li><%= link_to "Log Off", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'My Account', user_path(current_user) %></li>
+          <span class = "option"><%= link_to "LOG OFF", destroy_user_session_path, method: :delete %></span>
+          <span class = "option"><%= link_to 'MY ACCOUNT', user_path(current_user) %></span>
+          <span class = "option"> <%= link_to 'LEARN MORE', pages_path %> </span>
         <% else %>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <li><%= link_to "Log In", new_user_session_path %></li>
+          <span class = "option"><%= link_to "SIGN UP", new_user_registration_path %></span>
+          <span class = "option"><%= link_to "LOG IN", new_user_session_path %></span>
+          <span class = "option"> <%= link_to 'LEARN MORE', pages_path %> </span>
         <% end %>
-      </ul>
+      </section>
   </div>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="alert-or-notice">
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+  </div>
 
 <%= yield %>
 

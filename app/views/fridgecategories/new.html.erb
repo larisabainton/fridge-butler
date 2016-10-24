@@ -1,7 +1,9 @@
-<h1>Add some categories</h1>
+<div class="sign-up">
+  <h2>Add some categories</h2>
 
-<h3>Tip: if you don't want to use categories, just call this "Fridge"</h3>
-<%= form_for @fridgecategory do |f| %>
-  <%= f.text_area :name, placeholder: "Name"%>
-  <%= f.submit "Save Category" %>
-<% end %>
+  <p>Tip: if you don't want to use categories, just call this "Fridge"</p>
+  <%= form_for @fridgecategory do |f| %>
+    <%= f.text_area :name, placeholder: "Name"%>
+    <%= f.submit "Save Category" %>
+  <% end %>
+</div>

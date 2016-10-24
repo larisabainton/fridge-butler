@@ -10,6 +10,7 @@ feature 'sign up' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -17,7 +18,7 @@ feature 'sign up' do
 
   context 'As a user' do
     scenario 'I can click on a button to view my account page' do
-      click_link 'My Account'
+      click_link 'MY ACCOUNT'
 
       expect(page).to have_xpath('//a[contains(., users)]')
     end
@@ -29,19 +30,17 @@ feature 'sign up' do
     end
 
     scenario 'I can see my name, email, and password on my account' do
-      click_link 'My Account'
+      click_link 'MY ACCOUNT'
 
       expect(page).to have_content(user.first_name)
       expect(page).to have_content(user.last_name)
       expect(page).to have_content(user.email)
-      expect(page).to have_content('Edit')
-      expect(page).to have_content('Delete')
     end
 
 
     scenario 'I can delete my account' do
-      click_link 'My Account'
-      click_link 'Delete'
+      click_link 'MY ACCOUNT'
+      click_button 'Delete'
 
       expect(page).to have_xpath('//a[contains(., sign_in)]')
       expect(Grocery.all).to_not include(grocery)

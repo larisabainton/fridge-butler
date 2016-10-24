@@ -9,6 +9,7 @@ feature 'adds groceries to grocerylist' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -16,7 +17,7 @@ feature 'adds groceries to grocerylist' do
   end
 
   context 'As a user' do
-    scenario 'I can add new groceries on the show page of my fridge' do
+    scenario 'I can add new groceries on the show page of my grocerylist' do
       within "div.new-grocery" do
         fill_in 'Enter a name', with: 'Carrot'
         fill_in 'Enter an amount', with: '2'
