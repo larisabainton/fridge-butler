@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
   <link href="foundation-overrides.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -38,9 +38,10 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-  <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div>
+  <div class="alert-or-notice">
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+  </div>
 
 <%= yield %>
 
