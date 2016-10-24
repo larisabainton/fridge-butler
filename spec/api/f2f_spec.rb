@@ -23,7 +23,7 @@ feature 'f2f results', vcr: true do
     click_link 'Grocery List'
   end
 
-  scenario 'f2f makes call to find recipes' do
-    
+  pending scenario 'f2f makes call to find recipes' do
+    expect(page).to have_content(recipe.name)  
   end
 end
