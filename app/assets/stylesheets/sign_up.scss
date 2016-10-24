@@ -1,0 +1,44 @@
+.sign-up {
+  color: black;
+  margin: 2rem 10rem;
+  padding: 2rem 0rem;
+  border: black solid 2px;
+
+  h2 {
+    text-align: center;
+    font-family: Eczar;
+  }
+
+  .field {
+    float: center;
+  }
+
+  label {
+    text-align: right;
+    color: black;
+    font-size: 1rem;
+    font-family: Eczar;
+  }
+
+  .small-9 {
+    padding-right: 4rem;
+  }
+
+  input {
+    color: black;
+  }
+
+  .bottom {
+    text-align: center;
+    color: black;
+
+    :link {
+      color: black;
+    }
+
+    :visited {
+      color: black;
+    }
+
+  }
+}
