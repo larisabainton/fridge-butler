@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'view fridge' do
+feature 'view recipes' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id ) }
   let!(:dairy) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id) }
@@ -11,13 +11,14 @@ feature 'view fridge' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
     click_on 'Recipes'
   end
 
-  context 'As a user' do
+  pending context 'As a user' do
     scenario 'I can see the recipe index page' do
     end
 

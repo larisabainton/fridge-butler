@@ -46,6 +46,7 @@ feature 'sign up' do
       expect(Grocery.all).to_not include(grocery)
       expect(Fridgecategory.all).to_not include(fridgecategory)
       expect(Fridge.all).to_not include(fridge)
+      expect(Grocerylist.all).to_not include(grocerylist)
     end
   end
 end

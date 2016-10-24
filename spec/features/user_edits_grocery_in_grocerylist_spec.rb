@@ -7,10 +7,7 @@ feature 'sign up' do
   let!(:fridge) { FactoryGirl.create(:fridge, user_id: user.id) }
   let!(:other_fridge) { FactoryGirl.create(:fridge, user_id: other_user.id ) }
   let!(:other_fridgecategory) { FactoryGirl.create(:fridgecategory, fridge_id: other_fridge.id)}
-  let!(:fridgecategory) { FactoryGirl.create(:fridgecategory, fridge_id: fridge.id)}
-  let!(:grocerylist) { FactoryGirl.create(:grocerylist, user_id: user.id) }
-  let!(:other_grocerylist) { FactoryGirl.create(:grocerylist, user_id: other_user.id) }
-  let!(:grocery) { FactoryGirl.create(:grocery, fridgecategory_id: fridgecategory.id, grocerylist_id: grocerylist.id)}
+  let!(:grocery) { FactoryGirl.create(:grocery, fridgecategory_id: fridgecategory.id)}
   let!(:other_grocery) { FactoryGirl.create(:grocery, fridgecategory_id: other_fridgecategory.id ) }
 
   before(:each) do
@@ -19,14 +16,6 @@ feature 'sign up' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
-    click_link 'Grocery List'
-  end
-
-  scenario 'I can delete a grocery from my grocerylist' do
-    within 'div.accept-button' do
-      click_link ''
-    end
-
-    expect(page).to_not have_content(grocery.name)
+    click_link 'My Fridge'
   end
 end

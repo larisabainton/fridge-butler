@@ -170,10 +170,12 @@ feature 'sign up' do
       fill_in 'Name', with: 'Grocery List'
       click_button 'Save Grocery List'
       check 'Dairy'
+      check 'Fruits'
       click_button 'Add Categories'
 
-      expect(page).to have_content('Category added successfully')
       expect(page).to have_content('My Fridge')
+      expect(page).to have_content('Dairy')
+      expect(page).to have_content('Fruits')
     end
   end
 end
