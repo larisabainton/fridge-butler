@@ -1,0 +1,30 @@
+.see-recipes {
+  padding: 2rem;
+
+  h1 {
+    font-family: Eczar;
+    text-align: center;
+  }
+
+  h2 {
+    font-family: Eczar;
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-family: Eczar;
+    font-size: 1.5rem;
+  }
+
+  .row {
+    border-top: $dark-gray solid 1px;
+    border-bottom: $dark-gray solid 1px;
+  }
+
+  img {
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+  }
+
+}

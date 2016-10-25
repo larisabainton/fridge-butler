@@ -7,7 +7,8 @@
     border: white solid 3px;
     padding: 0.5rem;
     margin: 0 4rem;
-    background-image: url('fruits.jpg');
+    background-image: url('https://static.pexels.com/photos/36156/pexels-photo.jpg');
+    background-size: 100%;
     color: white;
     text-shadow: #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px, #124444 0px 0px 1px;
   }
@@ -28,10 +29,6 @@
     font-family: Eczar;
   }
 
-  li {
-    list-style: none;
-  }
-
   :link {
     color: black
   }
@@ -45,6 +42,15 @@
     color: $medium-gray;
     float: center;
   }
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    text-align: center;
+    font-weight: normal;
+  }
 }
 
 .list {
@@ -53,9 +59,9 @@
 }
 
 .add-things {
-  background-color: #3D3288;
+  background-color: #C48E35;
   color: white;
-  padding: 1rem;
+  padding: 2rem 10rem;
 
   label {
     color: white;
@@ -70,5 +76,29 @@
     margin-bottom: 4rem;
     padding-bottom: 2.5rem;
     border-bottom: white solid 1px;
+  }
+}
+
+#almost-expired {
+  color: #564B9B;
+
+  :link {
+    color: #564B9B;
+  }
+
+  :visited {
+    color: #564B9B;
+  }
+}
+
+#expired {
+  color: #150C53;
+  
+  :link {
+    color: #150C53;
+  }
+
+  :visited {
+    color: #150C53;
   }
 }

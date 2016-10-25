@@ -1,4 +1,9 @@
 class GroceriesController < ApplicationController
+  def index
+    @user = current_user
+    @fridge = @user.fridge
+    @groceries = @fridge.groceries.where(grocerylist_id: nil).order(name: :asc)
+  end
 
   def new
     if user_signed_in?
@@ -47,18 +52,19 @@ class GroceriesController < ApplicationController
     @fridgecategory = @grocery.fridgecategory
     @fridge = @fridgecategory.fridge
     @fridgecategories = @fridge.fridgecategories
+    @user = current_user
+    @grocerylist = @user.grocerylist
 
-    if @fridge.user == current_user
-      if @grocery.update_attributes(grocery_params)
-        flash[:notice] = "Grocery edited successfully"
+    if @grocery.update_attributes(grocery_params)
+      flash[:notice] = "Grocery edited successfully"
+      if @grocery.grocerylist.nil?
         redirect_to @fridge
       else
-        flash[:notice] = @grocery.errors.full_messages.join(', ')
-        render 'edit'
+        redirect_to @grocerylist
       end
     else
-      flash[:notice] = 'You do not have permission to edit this grocery'
-      redirect_to root_path
+      flash[:notice] = @grocery.errors.full_messages.join(', ')
+      render 'edit'
     end
   end
 

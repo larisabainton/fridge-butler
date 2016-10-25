@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'spec_helper'
 
-feature 'sign up' do
+feature 'f2f results', vcr: true do
   let!(:user) { FactoryGirl.create(:user, email: 'example@example.com') }
   let!(:other_user) { FactoryGirl.create(:user) }
   let!(:other_fridge) { FactoryGirl.create(:fridge, user_id: other_user.id ) }
@@ -22,11 +23,7 @@ feature 'sign up' do
     click_link 'Grocery List'
   end
 
-  scenario 'I can delete a grocery from my grocerylist' do
-    within 'div.delete-button' do
-      click_link ''
-    end
-
-    expect(page).to_not have_content(grocery.name)
+  pending scenario 'f2f makes call to find recipes' do
+    expect(page).to have_content(recipe.name)  
   end
 end

@@ -6,15 +6,24 @@ Rails.application.routes.draw do
 
   resources :fridges
   resources :users
-  resources :fridgecategories, except: [:index, :show]
-  resources :groceries, except: [:index, :show] do
+  resources :fridgecategories, except: [:index, :show] do
+    member do
+      post 'initial'
+      get 'initial'
+    end
+  end
+  resources :groceries, except: [:show] do
     member do
       get 'accept'
       post 'accept'
     end
   end
   resources :grocerylists
-  resources :recipes
+  resources :recipes do
+    member do
+      post 'index'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

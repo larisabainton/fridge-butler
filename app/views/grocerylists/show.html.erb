@@ -1,15 +1,26 @@
 <div class="fridge-page">
   <div class="list">
-    <h1><%= @grocerylist.name %></h1>
+    <h1><%= link_to @grocerylist.name, edit_grocerylist_path(@grocerylist) %></h1>
 
-    <ul>
-    <% @groceries.each do |g| %>
-      <li><%= g.name %> </li>
-      <div class="accept-button">
-        <%= link_to 'Accept', accept_grocery_path(g) %>
-      </div>
-    <% end %>
-    </ul>
+    <table>
+      <% @groceries.each do |g| %>
+      <tr>
+        <td>
+          <%= link_to g.name, edit_grocery_path(g) %>
+        </td>
+        <td>
+          <div class="accept-button">
+            <%= link_to '', accept_grocery_path(g), class: 'fa fa-check' %>
+          </div>
+        </td>
+        <td>
+          <div class="delete-button">
+            <%= link_to '', g, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 
   <div class="add-things">

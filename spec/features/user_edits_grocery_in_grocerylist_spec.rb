@@ -22,11 +22,22 @@ feature 'sign up' do
     click_link 'Grocery List'
   end
 
-  scenario 'I can delete a grocery from my grocerylist' do
-    within 'div.delete-button' do
-      click_link ''
-    end
+  scenario 'I can edit a grocery in my grocery list' do
+    click_link grocery.name
 
-    expect(page).to_not have_content(grocery.name)
+    fill_in 'Enter a name', with: 'New Grocery'
+    click_button 'Save Grocery'
+
+    expect(page).to have_content('Grocery edited successfully')
+    expect(page).to have_content('New Grocery')
+  end
+
+  scenario 'I must input valid info to my grocery' do
+    click_link grocery.name
+
+    fill_in 'Enter a name', with: ''
+    click_button 'Save Grocery'
+
+    expect(page).to have_content('Name can\'t be blank')
   end
 end
