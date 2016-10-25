@@ -3,7 +3,7 @@ class GrocerylistsController < ApplicationController
     @user = current_user
     @grocerylist = @user.grocerylist
     @groceries = @grocerylist.groceries
-    @fridgecategories = @user.fridgecategories
+    @fridgecategories = @user.fridgecategories.order(name: :asc)
     @grocery = Grocery.new
   end
 
