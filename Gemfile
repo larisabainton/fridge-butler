@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'foundation-rails'
 gem 'react-rails'
-gem 'puma'
+gem 'sendgrid-ruby'
 gem 'json'
 
 group :development, :test do
@@ -18,6 +18,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'mailcatcher'
   gem 'dotenv-rails'
 end
 
