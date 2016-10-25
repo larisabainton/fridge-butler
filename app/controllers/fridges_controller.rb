@@ -5,14 +5,15 @@ class FridgesController < ApplicationController
       @fridge = @user.fridge
       @grocerylist = @user.grocerylist
     else
-      redirect_to new_user_session_path
+      flash[:notice] = 'You cannot view this fridge'
+      redirect_to root_path
     end
   end
 
   def show
     @user = current_user
     @fridge = @user.fridge
-    @fridgecategories = @fridge.fridgecategories
+    @fridgecategories = @fridge.fridgecategories.order(name: :asc)
     @fridgecategory = Fridgecategory.new
     @grocery = Grocery.new
   end

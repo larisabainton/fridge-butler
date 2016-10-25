@@ -9,6 +9,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'react-rails'
 gem 'sendgrid-ruby'
+gem 'json'
 
 group :development, :test do
   gem 'capybara'
@@ -18,12 +19,15 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'mailcatcher'
+  gem 'dotenv-rails'
 end
 
 group :test do
   gem 'launchy', require: false
   gem 'coveralls', require: false
   gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do

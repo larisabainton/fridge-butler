@@ -3,7 +3,7 @@ class GrocerylistsController < ApplicationController
     @user = current_user
     @grocerylist = @user.grocerylist
     @groceries = @grocerylist.groceries
-    @fridgecategories = @user.fridgecategories
+    @fridgecategories = @user.fridgecategories.order(name: :asc)
     @grocery = Grocery.new
   end
 
@@ -26,6 +26,31 @@ class GrocerylistsController < ApplicationController
     else
       flash[:notice] = @grocerylist.errors.full_messages.join(', ')
       render 'new'
+    end
+  end
+
+  def edit
+    @grocerylist = Grocerylist.find(params[:id])
+    if current_user != @grocerylist.user
+      flash[:notice] = 'You cannot edit this grocery list'
+      redirect_to @grocerylist
+    end
+  end
+
+
+  def update
+    @grocerylist = Grocerylist.find(params[:id])
+    if @grocerylist.user == current_user
+      if @grocerylist.update_attributes(grocerylist_params)
+        flash[:notice] = "Grocery List edited successfully"
+        redirect_to @grocerylist
+      else
+        flash[:notice] = @grocerylist.errors.full_messages.join(', ')
+        render 'edit'
+      end
+    else
+      flash[:notice] = 'You do not have permission to edit this grocery list'
+      redirect_to @grocerylist
     end
   end
 

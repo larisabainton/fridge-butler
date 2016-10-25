@@ -7,12 +7,12 @@ feature 'sign up' do
     scenario 'I see a signup button on the home page' do
       visit root_path
 
-      expect(page).to have_content('Sign Up')
+      expect(page).to have_content('SIGN UP')
     end
 
     scenario 'I can click on the sign up button' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
 
       expect(page).to have_content('Password')
       expect(page).to have_content('Email')
@@ -20,7 +20,7 @@ feature 'sign up' do
 
     scenario 'I can enter my information and sign up' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example2@example.com'
@@ -33,7 +33,7 @@ feature 'sign up' do
 
     scenario 'I can\'t enter an email already in the system' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example@example.com'
@@ -46,7 +46,7 @@ feature 'sign up' do
 
     scenario 'I can\'t enter a password confirmation that doesn\'t match' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example3@example.com'
@@ -59,7 +59,7 @@ feature 'sign up' do
 
     scenario 'I can\'t enter a password that is too short' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example4@example.com'
@@ -72,7 +72,7 @@ feature 'sign up' do
 
     scenario 'After I sign up, I am sent to a page to create my fridge' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example5@example.com'
@@ -92,7 +92,7 @@ feature 'sign up' do
 
     scenario 'I must provide a name to create the fridge' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example6@example.com'
@@ -108,7 +108,7 @@ feature 'sign up' do
 
     scenario 'I must provide a name to create the Grocery List' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example6@example.com'
@@ -126,7 +126,7 @@ feature 'sign up' do
 
     scenario 'If I don\'t provide a name when creating my grocery list, I get an error' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example6@example.com'
@@ -143,7 +143,7 @@ feature 'sign up' do
 
     scenario 'I expect an error if I don\'t provide a name for my fridge' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example5@example.com'
@@ -158,7 +158,7 @@ feature 'sign up' do
 
     scenario 'I can create a foodcategory after I create my fridge' do
       visit root_path
-      click_link 'Sign Up'
+      click_link 'SIGN UP'
       fill_in 'First Name', with: 'John'
       fill_in 'Last Name', with: 'Smith'
       fill_in 'Email', with: 'example6@example.com'
@@ -169,11 +169,13 @@ feature 'sign up' do
       click_button 'Save Fridge'
       fill_in 'Name', with: 'Grocery List'
       click_button 'Save Grocery List'
-      fill_in 'Name', with: 'Dairy'
-      click_button 'Save Category'
+      check 'Dairy'
+      check 'Fruits'
+      click_button 'Add Categories'
 
-      expect(page).to have_content('Category added successfully')
       expect(page).to have_content('My Fridge')
+      expect(page).to have_content('Dairy')
+      expect(page).to have_content('Fruits')
     end
   end
 end

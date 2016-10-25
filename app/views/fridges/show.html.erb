@@ -1,39 +1,105 @@
-<%= link_to @fridge.name, edit_fridge_path(@fridge) %>
+<div class="fridge-page">
+  <div class="list">
+    <p>
+      <h1><%= link_to @fridge.name, edit_fridge_path(@fridge) %></h1>
+    </p>
 
-<div id="app"></div>
+    <table>
+      <thead>
+        <% @fridgecategories.each do |fc| %>
+        <tr>
+          <th>
+            <h3 class = "delete-fc"><%= link_to fc.name, edit_fridgecategory_path(fc) %></h3>
+          </th>
+          <td class = "delete-category">
+            <%= link_to '', fc, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+          </td>
+        </tr>
+        <tr>
+          <% @groceries = fc.groceries.order(name: :asc) %>
+          <% @groceries.each do |grocery| %>
+            <% if grocery.grocerylist_id == nil %>
+              <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now && grocery.exp_date > 0.day.from_now %>
+              <td id = "almost-expired">
+                <%= link_to grocery.name, edit_grocery_path(grocery) %> - Almost Expired
+              </td>
+              <td class = "delete-grocery">
+                <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+              </td>
+                <% elsif !grocery.exp_date.nil? && grocery.exp_date <= Date.current %>
+                <td id = "expired">
+                  <%= link_to grocery.name, edit_grocery_path(grocery) %> - Expired
+                </td>
+                <td class = "delete-grocery">
+                  <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+                </td>
+                <% else %>
+                <td id = "not-expired">
+                  <%= link_to grocery.name, edit_grocery_path(grocery) %>
+                </td>
+                <td class = "delete-grocery">
+                  <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+                </td>
+                <% end %>
+             <% end %>
+          </tr>
+          <% end %>
+        <% end %>
+      </thead>
+    </table>
 
-<ul>
-  <% @fridgecategories.each do |fc| %>
-    <%= fc.name %>
-    <%= link_to 'Edit Category', edit_fridgecategory_path(fc) %> </li>
-    <%= link_to 'Delete Category', fc, method: :delete, data: { confirm: 'You sure?' } %>
-    <ul>
-      <% fc.groceries.each do |grocery| %>
-        <% if grocery.grocerylist_id == nil %>
-          <li> <%= grocery.name %>
-          <%= link_to 'Edit Grocery', edit_grocery_path(grocery) %>
-           <%= link_to 'Delete Grocery', grocery, method: :delete, data: { confirm: 'You sure?' } %> </li>
-         <% end %>
+
+    <!-- <ul>
+      <% @fridgecategories.each do |fc| %>
+        <h3 class = "delete-fc"><%= link_to fc.name, edit_fridgecategory_path(fc) %>
+          <%= link_to '', fc, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+        </h3>
+        <ul>
+          <% @groceries = fc.groceries.order(name: :asc) %>
+          <% @groceries.each do |grocery| %>
+            <% if grocery.grocerylist_id == nil %>
+              <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now %>
+              <li class = "delete-grocery", id = "almost-expired">
+                <%= link_to grocery.name, edit_grocery_path(grocery) %>
+                <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+              </li>
+                <% elsif !grocery.exp_date.nil? && grocery.exp_date <= Date.current %>
+                <li class = "delete-grocery", id = "expired">
+                  <%= link_to grocery.name, edit_grocery_path(grocery) %>
+                  <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+                </li>
+                <% else %>
+                <li class = "delete-grocery", id = "not-expired">
+                  <%= link_to grocery.name, edit_grocery_path(grocery) %>
+                  <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
+                </li>
+                <% end %>
+             <% end %>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
-</ul>
+    </ul> -->
+  </div>
+  <div class="add-things">
+    <div class="add-category">
+      <h2>Add a Category:</h2>
+      <%= form_for @fridgecategory do |f| %>
+        <%= f.text_area :name, placeholder: "Name"%>
+        <%= f.submit "Save Category" %>
+      <% end %>
+    </div>
 
-<h2>Add a Category:</h2>
-<%= form_for @fridgecategory do |f| %>
-  <%= f.text_area :name, placeholder: "Name"%>
-  <%= f.submit "Save Category" %>
-<% end %>
-
-<h2>Add a Grocery:</h2>
-<div class="new-grocery">
-  <%= form_for @grocery do |f| %>
-    <%= f.text_area :name, placeholder: 'Enter a name' %>
-    <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
-    <%= f.label :fridgecategory_id, "Category:" %>
-    <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
-    <%= f.label :exp_date, "Expires:" %>
-    <%= f.date_select :exp_date, order: [:month, :day, :year] %>
-    <%= f.submit "Add Grocery" %>
-  <% end %>
+    <h2>Add a Grocery:</h2>
+    <div class="new-grocery">
+      <%= form_for @grocery do |f| %>
+        <%= f.text_area :name, placeholder: 'Enter a name' %>
+        <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
+        <%= f.label :fridgecategory_id, "Category:" %>
+        <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
+        <%= f.label :exp_date, "Expires:" %>
+        <%= f.date_select :exp_date, order: [:month, :day, :year] %>
+        <%= f.submit "Add Grocery" %>
+      <% end %>
+    </div>
+  </div>
 </div>

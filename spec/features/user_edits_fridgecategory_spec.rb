@@ -10,6 +10,7 @@ feature 'sign up' do
 
   before(:each) do
     visit root_path
+    click_link 'LOG IN'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -19,7 +20,7 @@ feature 'sign up' do
   context 'As a user' do
     scenario 'I can edit my fridgecategory' do
       old_name = fridgecategory.name
-      click_link 'Edit Category'
+      click_link fridgecategory.name
       fill_in 'Name', with: 'New Category Name'
       click_button 'Save Category'
 
@@ -28,13 +29,15 @@ feature 'sign up' do
     end
 
     scenario 'I can delete my fridgecategory' do
-      click_link 'Delete Category'
+      within "td.delete-category" do
+        click_link ''
+      end
 
       expect(page).to_not have_content(fridgecategory.name)
     end
 
     scenario 'I must input valid info to my fridgecategory' do
-      click_link 'Edit Category'
+      click_link fridgecategory.name
 
       fill_in 'Name', with: ''
       click_button 'Save Category'

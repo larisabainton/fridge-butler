@@ -8,6 +8,7 @@ feature 'view fridges' do
 
     scenario 'I cannot see someone else\'s fridge' do
       visit root_path
+      click_link 'LOG IN'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Log in'
@@ -18,6 +19,7 @@ feature 'view fridges' do
 
     scenario 'The link takes me to my fridge show page' do
       visit root_path
+      click_link 'LOG IN'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Log in'
