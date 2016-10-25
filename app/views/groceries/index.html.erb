@@ -1,7 +1,11 @@
-<%= form_tag '/recipes/1/index' do %>
-  <% @groceries.each do |grocery| %>
-    <p><%= check_box_tag grocery.name, grocery.name %>
-    <%= label_tag grocery.name %></p>
+<div class="choose-groceries">
+  <h1>Choose Your Groceries</h1>
+
+  <%= form_tag '/recipes/1/index' do %>
+    <% @groceries.each do |grocery| %>
+      <p><%= check_box_tag grocery.name, grocery.name %>
+      <%= label_tag grocery.name %></p>
+    <% end %>
+    <p><%= submit_tag 'Find Recipes' %></p>
   <% end %>
-  <p><%= submit_tag 'Find Recipes' %></p>
-<% end %>
+</div>

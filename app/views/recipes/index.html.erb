@@ -1,7 +1,22 @@
-<% if @recipes.empty? %>
-  <h3>No Recipes were found!</h3>
-<% else %>
-  <% @recipes.each do |r| %>
-    <%= r.title %>
+<div class="see-recipes">
+  <%= link_to 'Back to Groceries', groceries_path %>
+
+  <h1>Top-Rated Recipes:</h1>
+
+  <% if @recipes.empty? %>
+    <h3>No Recipes were found!</h3>
+  <% else %>
+    <% @recipes.each do |r| %>
+      <div class="row">
+        <div class="small-6 columns">
+          <h2><%= link_to r.title, r.source_url %></h2>
+          <p><%= r.publisher %></p>
+        </div>
+        <div class="small-6 columns">
+          <%= image_tag(r.image_url) %>
+        </div>
+
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

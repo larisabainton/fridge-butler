@@ -79,14 +79,26 @@
   }
 }
 
-#expired {
-  color: red;
+#almost-expired {
+  color: #564B9B;
 
   :link {
-    color: red;
+    color: #564B9B;
   }
 
   :visited {
-    color: red;
+    color: #564B9B;
+  }
+}
+
+#expired {
+  color: #150C53;
+  
+  :link {
+    color: #150C53;
+  }
+
+  :visited {
+    color: #150C53;
   }
 }

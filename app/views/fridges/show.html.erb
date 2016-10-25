@@ -19,16 +19,16 @@
           <% @groceries = fc.groceries.order(name: :asc) %>
           <% @groceries.each do |grocery| %>
             <% if grocery.grocerylist_id == nil %>
-              <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now %>
+              <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now && grocery.exp_date > 0.day.from_now %>
               <td id = "almost-expired">
-                <%= link_to grocery.name, edit_grocery_path(grocery) %>
+                <%= link_to grocery.name, edit_grocery_path(grocery) %> - Almost Expired
               </td>
               <td class = "delete-grocery">
                 <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
               </td>
                 <% elsif !grocery.exp_date.nil? && grocery.exp_date <= Date.current %>
                 <td id = "expired">
-                  <%= link_to grocery.name, edit_grocery_path(grocery) %>
+                  <%= link_to grocery.name, edit_grocery_path(grocery) %> - Expired
                 </td>
                 <td class = "delete-grocery">
                   <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
