@@ -53,21 +53,16 @@ class GroceriesController < ApplicationController
     @user = current_user
     @grocerylist = @user.grocerylist
 
-    if @fridge.user == current_user
-      if @grocery.update_attributes(grocery_params)
-        flash[:notice] = "Grocery edited successfully"
-        if @grocery.grocerylist.nil?
-          redirect_to @fridge
-        else
-          redirect_to @grocerylist
-        end
+    if @grocery.update_attributes(grocery_params)
+      flash[:notice] = "Grocery edited successfully"
+      if @grocery.grocerylist.nil?
+        redirect_to @fridge
       else
-        flash[:notice] = @grocery.errors.full_messages.join(', ')
-        render 'edit'
+        redirect_to @grocerylist
       end
     else
-      flash[:notice] = 'You do not have permission to edit this grocery'
-      redirect_to root_path
+      flash[:notice] = @grocery.errors.full_messages.join(', ')
+      render 'edit'
     end
   end
 

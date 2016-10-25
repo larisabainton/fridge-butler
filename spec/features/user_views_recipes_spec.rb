@@ -21,14 +21,25 @@ feature 'view recipes', vcr: true do
 
   context 'As a user' do
 
-    pending scenario 'I see only the groceries that I have' do
+    scenario 'I see only the groceries that I have' do
+      expect(page).to have_content(milk.name)
+      expect(page).to have_content(cheese.name)
+      expect(page).to_not have_content(meat.name)
     end
 
     pending scenario 'I can select which groceries I want to search' do
+      check milk.name
+      check cheese.name
+      click_button 'Find Recipes'
 
+      expect(page).to_not have_content('Error')
+      expect(page).to have_content('HELP HOW DO I STUB')
     end
 
     pending scenario 'I get back a list of recipes' do
+      expect(page).to have_content(milk.name)
+      expect(page).to have_content(cheese.name)
+      expect(page).to have_content('HELP HOW DO I STUB')
     end
   end
 end
