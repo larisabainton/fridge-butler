@@ -141,6 +141,23 @@ feature 'sign up' do
       expect(page).to have_content 'Name can\'t be blank'
     end
 
+    scenario 'I must be signed in to create my grocery list' do
+      visit root_path
+      click_link 'SIGN UP'
+      fill_in 'First Name', with: 'John'
+      fill_in 'Last Name', with: 'Smith'
+      fill_in 'Email', with: 'example6@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign up'
+      fill_in 'Name', with: 'My Fridge'
+      click_button 'Save Fridge'
+      click_link 'LOG OFF'
+      visit '/grocerylists/new'
+
+      expect(page).to have_content('Please sign in')
+    end
+
     scenario 'I expect an error if I don\'t provide a name for my fridge' do
       visit root_path
       click_link 'SIGN UP'

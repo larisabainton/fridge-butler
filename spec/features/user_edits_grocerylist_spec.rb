@@ -38,4 +38,10 @@ feature 'sign up' do
 
     expect(page).to have_content('Name can\'t be blank')
   end
+
+  scenario 'I can only edit my own grocery list' do
+    visit "/grocerylists/#{other_grocerylist.id}/edit"
+
+    expect(page).to have_content('You cannot edit this grocery list')
+  end
 end

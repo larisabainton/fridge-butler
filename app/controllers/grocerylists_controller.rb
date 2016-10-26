@@ -40,17 +40,12 @@ class GrocerylistsController < ApplicationController
 
   def update
     @grocerylist = Grocerylist.find(params[:id])
-    if @grocerylist.user == current_user
-      if @grocerylist.update_attributes(grocerylist_params)
-        flash[:notice] = "Grocery List edited successfully"
-        redirect_to @grocerylist
-      else
-        flash[:notice] = @grocerylist.errors.full_messages.join(', ')
-        render 'edit'
-      end
-    else
-      flash[:notice] = 'You do not have permission to edit this grocery list'
+    if @grocerylist.update_attributes(grocerylist_params)
+      flash[:notice] = "Grocery List edited successfully"
       redirect_to @grocerylist
+    else
+      flash[:notice] = @grocerylist.errors.full_messages.join(', ')
+      render 'edit'
     end
   end
 
