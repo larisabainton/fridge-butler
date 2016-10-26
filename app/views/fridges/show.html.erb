@@ -3,9 +3,9 @@
     <p>
       <h1><%= link_to @fridge.name, edit_fridge_path(@fridge) %></h1>
     </p>
-
     <table>
       <thead>
+        <div id="react"></div>
         <% @fridgecategories.each do |fc| %>
         <tr>
           <th>
@@ -47,38 +47,6 @@
         <% end %>
       </thead>
     </table>
-
-
-    <!-- <ul>
-      <% @fridgecategories.each do |fc| %>
-        <h3 class = "delete-fc"><%= link_to fc.name, edit_fridgecategory_path(fc) %>
-          <%= link_to '', fc, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
-        </h3>
-        <ul>
-          <% @groceries = fc.groceries.order(name: :asc) %>
-          <% @groceries.each do |grocery| %>
-            <% if grocery.grocerylist_id == nil %>
-              <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now %>
-              <li class = "delete-grocery", id = "almost-expired">
-                <%= link_to grocery.name, edit_grocery_path(grocery) %>
-                <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
-              </li>
-                <% elsif !grocery.exp_date.nil? && grocery.exp_date <= Date.current %>
-                <li class = "delete-grocery", id = "expired">
-                  <%= link_to grocery.name, edit_grocery_path(grocery) %>
-                  <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
-                </li>
-                <% else %>
-                <li class = "delete-grocery", id = "not-expired">
-                  <%= link_to grocery.name, edit_grocery_path(grocery) %>
-                  <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
-                </li>
-                <% end %>
-             <% end %>
-          <% end %>
-        </ul>
-      <% end %>
-    </ul> -->
   </div>
   <div class="add-things">
     <div class="add-category">
