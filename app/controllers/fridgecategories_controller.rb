@@ -6,7 +6,7 @@ class FridgecategoriesController < ApplicationController
         Fridgecategory.create(fridge_id: @fridge.id, name: key)
       end
     end
-    redirect_to @fridge
+    redirect_to fridge_path(@fridge)
   end
 
   def new
@@ -48,7 +48,7 @@ class FridgecategoriesController < ApplicationController
     if @fridge.user == current_user
       if @fridgecategory.update_attributes(fridgecategory_params)
         flash[:notice] = "Category edited successfully"
-        redirect_to @fridge
+        redirect_to fridge_path(@fridge)
       else
         flash[:notice] = @fridgecategory.errors.full_messages.join(', ')
         render 'edit'
@@ -64,7 +64,7 @@ class FridgecategoriesController < ApplicationController
     @fridge = @fridgecategory.fridge
     if @fridge.user == current_user
       @fridgecategory.destroy
-      redirect_to @fridge
+      redirect_to fridge_path(@fridge)
     else
       flash[:notice] = 'You do not have permission to edit this category'
       redirect_to root_path
