@@ -58,7 +58,7 @@ class GroceriesController < ApplicationController
     if @grocery.update_attributes(grocery_params)
       flash[:notice] = "Grocery edited successfully"
       if @grocery.grocerylist.nil?
-        redirect_to @fridge
+        redirect_to fridge_path(@fridge)
       else
         redirect_to @grocerylist
       end
@@ -74,7 +74,7 @@ class GroceriesController < ApplicationController
     @fridge = @fridgecategory.fridge
     if @fridge.user == current_user
       @grocery.destroy
-      redirect_to @fridge
+      redirect_to fridge_path(@fridge)
     else
       flash[:notice] = 'You do not have permission to edit this grocery'
       redirect_to root_path

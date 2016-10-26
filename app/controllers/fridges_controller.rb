@@ -44,7 +44,7 @@ class FridgesController < ApplicationController
     @fridge = Fridge.find(params[:id])
     if current_user != @fridge.user
       flash[:notice] = 'You cannot edit this fridge'
-      redirect_to @fridge
+      redirect_to fridge_path(@fridge)
     end
   end
 
@@ -54,14 +54,14 @@ class FridgesController < ApplicationController
     if @fridge.user == current_user
       if @fridge.update_attributes(fridge_params)
         flash[:notice] = "Fridge edited successfully"
-        redirect_to @fridge
+        redirect_to fridge_path(@fridge)
       else
         flash[:notice] = @fridge.errors.full_messages.join(', ')
         render 'edit'
       end
     else
       flash[:notice] = 'You do not have permission to edit this fridge'
-      redirect_to @fridge
+      redirect_to fridge_path(@fridge)
     end
   end
 
