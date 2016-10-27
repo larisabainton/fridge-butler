@@ -8,6 +8,7 @@
       <thead>
         <% @fridgecategories.each do |fc| %>
         <tr>
+          <td> </td>
           <th>
             <h3 class = "delete-fc"><%= link_to fc.name, edit_fridgecategory_path(fc) %></h3>
           </th>
@@ -20,6 +21,7 @@
           <% @groceries.each do |grocery| %>
             <% if grocery.grocerylist_id == nil %>
               <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now && grocery.exp_date > 0.day.from_now %>
+              <td> </td>
               <td id = "almost-expired">
                 <%= link_to grocery.name, edit_grocery_path(grocery) %> - Almost Expired
               </td>
@@ -27,6 +29,7 @@
                 <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
               </td>
                 <% elsif !grocery.exp_date.nil? && grocery.exp_date <= Date.current %>
+                <td> </td>
                 <td id = "expired">
                   <%= link_to grocery.name, edit_grocery_path(grocery) %> - Expired
                 </td>
@@ -34,6 +37,7 @@
                   <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
                 </td>
                 <% else %>
+                <td> </td>
                 <td id = "not-expired">
                   <%= link_to grocery.name, edit_grocery_path(grocery) %>
                 </td>
