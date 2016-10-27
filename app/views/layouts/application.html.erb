@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="top-bar">
+  <nav class="top-bar" data-topbar role="navigation">
     <%= link_to root_path do %>
       <div class="title-area small-6 columns">
           <i class="fa fa-cutlery" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
           <span class = "option"> <%= link_to 'LEARN MORE', pages_path %> </span>
         <% end %>
       </section>
-  </div>
+  </nav>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
