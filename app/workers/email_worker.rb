@@ -1,8 +1,9 @@
 class EmailWorker
   include Sidekiq::Worker
+  include Sidetiq::Schedulable
   sidekiq_options retry: false
 
-  # recurrence { daily }
+  recurrence { daily }
 
   def perform
     Grocery.expiration_check.each do |grocery|
