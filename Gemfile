@@ -10,6 +10,8 @@ gem 'foundation-rails'
 gem 'react-rails'
 gem 'sendgrid-ruby'
 gem 'json'
+gem 'unirest'
+gem 'rest-client'
 
 group :development, :test do
   gem 'capybara'
