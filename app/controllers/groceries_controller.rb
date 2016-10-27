@@ -96,6 +96,10 @@ class GroceriesController < ApplicationController
     end
   end
 
+  def email
+    EmailWorker.perform_async
+  end
+
   private
 
   def grocery_params

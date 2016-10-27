@@ -10,6 +10,9 @@ gem 'foundation-rails'
 gem 'react-rails'
 gem 'sendgrid-ruby'
 gem 'json'
+gem 'sidekiq'
+gem 'sinatra'
+gem 'sidetiq'
 
 group :development, :test do
   gem 'capybara'
