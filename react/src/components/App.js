@@ -32,6 +32,7 @@ class App extends Component {
       contentType: 'application/json'
     })
   }
+
   handleButtonClick(id) {
     let newGroceries = this.state.groceries.filter(grocery => {
       $.ajax({
@@ -60,8 +61,7 @@ class App extends Component {
 
   render() {
     return(
-      <div className="small-4 small-centered columns app">
-        <h1 className="text-center">Grocery List React</h1>
+      <div>
         <GroceryForm
           handleFormSubmit={this.handleFormSubmit}
           handleChange={this.handleChange}
