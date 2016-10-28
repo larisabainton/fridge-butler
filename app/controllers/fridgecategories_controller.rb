@@ -45,30 +45,21 @@ class FridgecategoriesController < ApplicationController
   def update
     @fridgecategory = Fridgecategory.find(params[:id])
     @fridge = @fridgecategory.fridge
-    if @fridge.user == current_user
-      if @fridgecategory.update_attributes(fridgecategory_params)
-        flash[:notice] = "Category edited successfully"
-        redirect_to fridge_path(@fridge)
-      else
-        flash[:notice] = @fridgecategory.errors.full_messages.join(', ')
-        render 'edit'
-      end
+    if @fridgecategory.update_attributes(fridgecategory_params)
+      flash[:notice] = "Category edited successfully"
+      redirect_to fridge_path(@fridge)
     else
-      flash[:notice] = 'You do not have permission to edit this category'
-      redirect_to root_path
+      flash[:notice] = @fridgecategory.errors.full_messages.join(', ')
+      render 'edit'
     end
   end
 
   def destroy
     @fridgecategory = Fridgecategory.find(params[:id])
     @fridge = @fridgecategory.fridge
-    if @fridge.user == current_user
-      @fridgecategory.destroy
-      redirect_to fridge_path(@fridge)
-    else
-      flash[:notice] = 'You do not have permission to edit this category'
-      redirect_to root_path
-    end
+
+    @fridgecategory.destroy
+    redirect_to fridge_path(@fridge)
   end
 
   private
