@@ -19,4 +19,12 @@ describe Grocery, type: :model do
     expect(Grocery.expiration_check).to be_a_kind_of(Array)
   end
 
+  it "should only return have groceries that are two days from now" do
+    milk = Grocery.create(name: 'Milk', quantity: 1, exp_date: 2.day.from_now, fridgecategory_id: 1, grocerylist_id: nil)
+    coffee = Grocery.create(name: 'Coffee', quantity: 1, exp_date: 3.day.from_now, fridgecategory_id: 1, grocerylist_id: nil)
+
+    expect(Grocery.expiration_check).to include(milk)
+    expect(Grocery.expiration_check).to_not include(coffee)
+  end
+
 end
