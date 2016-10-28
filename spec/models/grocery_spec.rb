@@ -15,4 +15,8 @@ describe Grocery, type: :model do
 
   it { should have_valid(:grocerylist_id).when(1, 2, nil) }
 
+  it "should be able to check for expiration date" do
+    expect(Grocery.expiration_check).to be_a_kind_of(Array)
+  end
+
 end
