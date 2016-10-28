@@ -26,28 +26,28 @@ feature 'add groceries' do
         fill_in 'Enter an amount', with: '2'
         choose vegetables.name
 
-        click_button 'Add Grocery'
+        click_button 'Save Grocery'
       end
       expect(page).to_not have_content('Please sign in')
       expect(page).to have_content('Grocery added successfully')
     end
 
     scenario 'I get an error if I don\'t provide anything' do
-      click_button 'Add Grocery'
+      click_button 'Save Grocery'
 
       expect(page).to have_content('Name can\'t be blank, Quantity is not a number, Quantity can\'t be blank, Fridgecategory can\'t be blank, Fridgecategory is not a number')
     end
 
     scenario 'I get an error if I don\'t enter a quantity' do
       fill_in 'Enter a name', with: 'Carrot'
-      click_button 'Add Grocery'
+      click_button 'Save Grocery'
 
       expect(page).to have_content('Quantity can\'t be blank')
     end
 
     scenario 'I get an error if I don\'t provide a name' do
       fill_in 'Enter an amount', with: '2'
-      click_button 'Add Grocery'
+      click_button 'Save Grocery'
 
       expect(page).to have_content('Name can\'t be blank')
     end

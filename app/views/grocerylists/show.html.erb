@@ -26,13 +26,7 @@
   <div class="add-things">
     <h2>Add a Grocery:</h2>
     <div class="new-grocery">
-      <%= form_for @grocery do |f| %>
-        <%= f.text_area :name, placeholder: 'Enter a name' %>
-        <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
-        <%= f.label :fridgecategory_id, "Category:" %>
-        <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
-        <%= f.submit "Add Grocery" %>
-      <% end %>
+      <%= render "/groceries/form" %>
     </div>
   </div>
 </div>
