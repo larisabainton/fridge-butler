@@ -1,9 +1,1 @@
-<%= form_for @grocery do |f| %>
-  <%= f.text_area :name, placeholder: 'Enter a name' %>
-  <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
-  <%= f.label :fridgecategory_id, "Category:" %>
-  <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
-  <%= f.label :exp_date, "Expires:" %>
-  <%= f.date_select :exp_date, order: [:month, :day, :year] %>
-  <%= f.submit "Save Grocery" %>
-<% end %>
+<%= render "form" %>

@@ -31,8 +31,9 @@
         <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
         <%= f.label :fridgecategory_id, "Category:" %>
         <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
-        <%= f.submit "Add Grocery" %>
+        <%= f.submit "Save Grocery" %>
       <% end %>
+
     </div>
   </div>
 </div>

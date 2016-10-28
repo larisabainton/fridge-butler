@@ -25,6 +25,10 @@ feature 'view fridge' do
       expect(page).to have_content(fridge.name)
     end
 
+    scenario 'I cannot view someone else\'s fridge' do
+      expect(page).to_not have_content(other_fridge.name)
+    end
+
     scenario 'I can see the food categories on the show page of my fridge' do
       expect(page).to have_content(dairy.name)
       expect(page).to have_content(vegetables.name)

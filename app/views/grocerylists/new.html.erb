@@ -3,8 +3,5 @@
   <p>
     You'll be able to keep groceries in your grocery list and add them to your fridge later on by pressing the "accept" button.
   </p>
-  <%= form_for @grocerylist do |f| %>
-    <%= f.text_area :name, placeholder: "Name"%>
-    <%= f.submit "Save Grocery List" %>
-  <% end %>
+  <%= render "form" %>
 </div>

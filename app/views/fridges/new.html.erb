@@ -4,8 +4,5 @@
     This can either be something simple like "Fridge", or more customized like "Jane's Fridge."
   </p>
 
-  <%= form_for @fridge do |f| %>
-    <%= f.text_area :name, placeholder: "Name"%>
-    <%= f.submit "Save Fridge" %>
-  <% end %>
+  <%= render "form" %>
 </div>

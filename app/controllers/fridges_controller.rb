@@ -1,13 +1,8 @@
 class FridgesController < ApplicationController
   def index
-    if user_signed_in?
-      @user = current_user
-      @fridge = @user.fridge
-      @grocerylist = @user.grocerylist
-    else
-      flash[:notice] = 'You cannot view this fridge'
-      redirect_to root_path
-    end
+    @user = current_user
+    @fridge = @user.fridge
+    @grocerylist = @user.grocerylist
   end
 
   def show
@@ -51,17 +46,13 @@ class FridgesController < ApplicationController
 
   def update
     @fridge = Fridge.find(params[:id])
-    if @fridge.user == current_user
-      if @fridge.update_attributes(fridge_params)
-        flash[:notice] = "Fridge edited successfully"
-        redirect_to fridge_path(@fridge)
-      else
-        flash[:notice] = @fridge.errors.full_messages.join(', ')
-        render 'edit'
-      end
-    else
-      flash[:notice] = 'You do not have permission to edit this fridge'
+
+    if @fridge.update_attributes(fridge_params)
+      flash[:notice] = "Fridge edited successfully"
       redirect_to fridge_path(@fridge)
+    else
+      flash[:notice] = @fridge.errors.full_messages.join(', ')
+      render 'edit'
     end
   end
 

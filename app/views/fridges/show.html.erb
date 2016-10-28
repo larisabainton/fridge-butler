@@ -20,6 +20,7 @@
           <% @groceries = fc.groceries.order(name: :asc) %>
           <% @groceries.each do |grocery| %>
             <% if grocery.grocerylist_id == nil %>
+
               <% if !grocery.exp_date.nil? && grocery.exp_date <= 2.day.from_now && grocery.exp_date > 0.day.from_now %>
               <td> </td>
               <td id = "almost-expired">
@@ -28,6 +29,7 @@
               <td class = "delete-grocery">
                 <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
               </td>
+
                 <% elsif !grocery.exp_date.nil? && grocery.exp_date <= Date.current %>
                 <td> </td>
                 <td id = "expired">
@@ -36,6 +38,7 @@
                 <td class = "delete-grocery">
                   <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
                 </td>
+
                 <% else %>
                 <td> </td>
                 <td id = "not-expired">
@@ -45,6 +48,7 @@
                   <%= link_to '', grocery, method: :delete, data: { confirm: 'You sure?' }, class: 'fa fa-times' %>
                 </td>
                 <% end %>
+                
              <% end %>
           </tr>
           <% end %>
@@ -55,23 +59,12 @@
   <div class="add-things">
     <div class="add-category">
       <h2>Add a Category:</h2>
-      <%= form_for @fridgecategory do |f| %>
-        <%= f.text_area :name, placeholder: "Name"%>
-        <%= f.submit "Save Category" %>
-      <% end %>
+      <%= render "fridgecategories/form" %>
     </div>
 
     <h2>Add a Grocery:</h2>
     <div class="new-grocery">
-      <%= form_for @grocery do |f| %>
-        <%= f.text_area :name, placeholder: 'Enter a name' %>
-        <%= f.text_area :quantity, placeholder: 'Enter an amount' %>
-        <%= f.label :fridgecategory_id, "Category:" %>
-        <%= f.collection_radio_buttons(:fridgecategory_id, @fridgecategories, :id, :name) %>
-        <%= f.label :exp_date, "Expires:" %>
-        <%= f.date_select :exp_date, order: [:month, :day, :year] %>
-        <%= f.submit "Add Grocery" %>
-      <% end %>
+      <%= render "/groceries/form" %>
     </div>
   </div>
 </div>
