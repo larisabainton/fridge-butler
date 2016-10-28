@@ -67,5 +67,19 @@ feature 'adds groceries to grocerylist' do
 
       expect(page).to_not have_content(grocery.name)
     end
+
+    scenario 'After I add a grocery, it has a grocery list id associated with it' do
+      within "div.new-grocery" do
+        fill_in 'Enter a name', with: 'Carrot'
+        fill_in 'Enter an amount', with: '2'
+        choose fridgecategory.name
+
+        click_button 'Save Grocery'
+      end
+
+      g = Grocery.find(21)
+      expect(g.grocerylist_id).to eq(grocerylist.id)
+      expect(g.grocerylist_id).to_not eq(nil)
+    end
   end
 end
